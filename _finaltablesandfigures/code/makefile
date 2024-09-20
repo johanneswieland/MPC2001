@@ -1,2 +1,2 @@
 all:
-	sh ./copytablesandfigures.sh 2008tablesandfigures.txt
+	sh ./copytablesandfigures.sh 2001tablesandfigures.txt
