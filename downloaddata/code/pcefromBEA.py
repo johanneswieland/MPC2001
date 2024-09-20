@@ -53,7 +53,7 @@ for TableName, TableTitle, Yearstart in zip(TableNames, TableTitles, Yearstarts)
         if Year == Yearstart:
             df = dftable
         else:
-            df = df.append(dftable)
+            df = pd.concat([df, dftable], axis=0)
 
 
     # ------------------------------------------------------------------------

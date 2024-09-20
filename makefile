@@ -3,6 +3,16 @@
 all:
 	. venv/bin/activate && make -C downloaddata/code
 	. venv/bin/activate && make -C _finaltablesandfigures/code
+	. venv/bin/activate && make -C appendCEXfiles/code
+	. venv/bin/activate && make -C ucccodemappings/code
+	. venv/bin/activate && make -C createconsumptionvariables/code
+	. venv/bin/activate && make -C checkforsmoothing/code
+	. venv/bin/activate && make -C testingconsumptionaggregation/code
+	. venv/bin/activate && make -C processrebatemodule/code
+	. venv/bin/activate && make -C createfamilycharacteristics/code
+	. venv/bin/activate && make -C nipavariables/code
+	. venv/bin/activate && make -C psmjvariables/code
+	. venv/bin/activate && make -C psmjsample/code
 
 # virtual environment
 install: venv
@@ -19,16 +29,7 @@ clean:
 
 # . venv/bin/activate && make -C download_clean_retail/code
 # . venv/bin/activate && make -C download_NIPA/code
-# . venv/bin/activate && make -C appendCEXfiles/code
-# . venv/bin/activate && make -C ucccodemappings/code
-# . venv/bin/activate && make -C createconsumptionvariables/code
-# . venv/bin/activate && make -C checkforsmoothing/code
-# . venv/bin/activate && make -C testingconsumptionaggregation/code
-# . venv/bin/activate && make -C processrebatemodule/code
-# . venv/bin/activate && make -C createfamilycharacteristics/code
-# . venv/bin/activate && make -C nipavariables/code
-# . venv/bin/activate && make -C psmjvariables/code
-# . venv/bin/activate && make -C psmjsample/code
+
 # . venv/bin/activate && make -C psmjregressions/code
 # . venv/bin/activate && make -C descriptive_stats/code
 # . venv/bin/activate && make -C graph_nipaVcex/code
