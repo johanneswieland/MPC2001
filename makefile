@@ -2,7 +2,6 @@
 
 all:
 	. venv/bin/activate && make -C downloaddata/code
-	. venv/bin/activate && make -C _finaltablesandfigures/code
 	. venv/bin/activate && make -C appendCEXfiles/code
 	. venv/bin/activate && make -C ucccodemappings/code
 	. venv/bin/activate && make -C createconsumptionvariables/code
@@ -13,6 +12,7 @@ all:
 	. venv/bin/activate && make -C nipavariables/code
 	. venv/bin/activate && make -C psmjvariables/code
 	. venv/bin/activate && make -C psmjsample/code
+	. venv/bin/activate && make -C _finaltablesandfigures/code
 
 # virtual environment
 install: venv
