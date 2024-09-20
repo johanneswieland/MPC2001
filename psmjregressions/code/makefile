@@ -51,5 +51,3 @@ $(output):  variablelabels.do Table2001_aggdef.do Table2001_bea_all.do Table2001
 	stata-se -b run Table2001_aggdef.do
 	stata-se -b run Table2001_bea_all.do
 	stata-se -b run Table2001_bias.do
-
-# rm -f ../output/*
