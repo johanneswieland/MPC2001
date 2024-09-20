@@ -50,7 +50,8 @@ for filetype in ["fmli", "mtbi", "TAX"]:
 
         # replace "." entries with empty strings to allow conversion to numeric
         df = df.replace(to_replace='.', value='')
-        df['PSU'] = df['PSU'].replace(to_replace=['S[0-9][0-9][A-Z]'], value=np.nan, regex=True)
+        if 'PSU' in df.columns:
+            df['PSU'] = df['PSU'].replace(to_replace=['S[0-9][0-9][A-Z]'], value=np.nan, regex=True)
 
     # applies numeric conversion when feasible
     df = df.apply(pd.to_numeric, errors='ignore')
