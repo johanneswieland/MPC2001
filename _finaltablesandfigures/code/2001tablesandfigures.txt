@@ -1,0 +1,15 @@
+../../model/output/calibrationnondurablesonly2001gamma.tex
+../../model/output/mpcsgammaJPS_paper.tex
+../../psmjregressions/output/Table_2001_NDcompare.tex
+../../psmjregressions/output/Table_2001_NDcomparerbtonly.tex
+../../psmjregressions/output/bea_all.tex
+../../psmjregressions/output/Table_2001_NDcompare_wlag
+../../psmjregressions/output/Table_2001_NDcompare_wlagrbtonly
+../../psmjregressions/output/bea_all_longtable
+../../narrative/output/fig_cy_pres.eps
+../../narrative/output/fig_cy_pres01.eps
+../../narrative/output/fig_ndisprebate01.eps
+../../model/output/Real_JPSNondurablesfc_micro_nondurablesonly2001.eps
+../../model/output/Real_JPSNondurablesfc_GE_nondurablesonly2001_nolegend.eps
+../../survey_prof_fore/SPF_dist_0102_wactual.pdf
+../../forecasting/fig_forecasts2001_jpsnondur.eps
