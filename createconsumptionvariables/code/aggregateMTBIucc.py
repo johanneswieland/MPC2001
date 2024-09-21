@@ -28,7 +28,7 @@ cecodes = uccdict.index.get_level_values(0)
 # Loop create variables for PSMJ Replication and then PCE-NIPA comparison
 # ------------------------------------------------------------------------
 
-filetype = ['nipa','psmj']
+filetype = ['psmj', 'nipa']
 
 for file in filetype:
     
@@ -55,7 +55,6 @@ for file in filetype:
 
     # reads mtbi parquet file
     df = pd.read_parquet(read_file)
-
     
     # create expenditure date
     df['DATE'] = pd.to_datetime(dict(year = df['REF_YR'], 
@@ -63,7 +62,7 @@ for file in filetype:
                                     day = 1))
     
     # drop columns we do not use
-    df.drop(['COST_','GIFT','PUBFLAG','REF_MO','REF_YR','SEQNO','ALCNO','UCCSEQ','EXPNAME','RTYPE'], inplace=True, axis=1)
+    df.drop(['COST_','GIFT','PUBFLAG','REF_MO','REF_YR'], inplace=True, axis=1)
 
     # ------------------------------------------------------------------------
     # COLLAPSE EXPENDITURE BY ID, UCC, AND DATE
