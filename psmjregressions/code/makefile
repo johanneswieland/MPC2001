@@ -7,7 +7,6 @@ folders := ../input ../output
 input= \
 		../input/psmjsampleinterview.dta  \
 		../input/psmjsamplemonthly.dta  \
-		../input/nipavariablesinterview.dta \
 		../input/agglabelsnipa.dta \
 		../input/agglabels_levelnames_nipa.dta \
 		../input/agglabelspsmj.dta \
@@ -35,9 +34,6 @@ $(folders):
 
 ../input/BEA_labels.xls :  | ../input
 	if [ -e ../../external_data/$(@F) ] ; then ln -s ../../external_data/$(@F) $@ ; else exit 1; fi	
-
-../input/nipavariablesinterview.dta:  | ../input
-	if [ -e ../../nipavariables/output/$(@F) ] ; then ln -s ../../nipavariables/output/$(@F) $@ ; else exit 1; fi	
 
 # Create sim link to file with downloaded cex data. if statement checks that the file exists
 ../input/psmjsampleinterview.dta ../input/psmjsamplemonthly.dta: | ../input

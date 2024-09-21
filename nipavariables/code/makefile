@@ -6,22 +6,20 @@ folders := ../input ../output
 # This generates the list of zip files we should see in the input folder 	
 input= \
 		../input/fmliquarterly.parquet \
-		../input/mtbimonthly.parquet \
+		../input/mtbimonthly_NIPACAT.parquet \
 		../input/cohortvariables.parquet \
 		../input/interviewvariables.parquet \
 		../input/rebate2001cuid.parquet \
 		../input/rebate2001interview.parquet \
-		../input/rebate2001monthly.parquet \
-		../input/nipavariablesinterview.parquet \
-		../input/nipavariablesmonthly.parquet \
+		../input/rebate2001monthly.parquet 
 
 
 # This generates the list of processed data files	
 output= \
-		../output/psmjexpendituresmonthly.parquet \
-		../output/psmjexpendituresinterview.parquet \
-		../output/psmjvariablesinterview.parquet \
-		../output/psmjvariablesmonthly.parquet 
+		../output/nipaexpendituresmonthly.parquet \
+		../output/nipaexpendituresinterview.parquet \
+		../output/nipavariablesinterview.parquet \
+		../output/nipavariablesmonthly.parquet
 
 
 # Recipes
@@ -32,7 +30,7 @@ $(folders):
 	mkdir $@
 
 # Create sim link to file with downloaded cex data. if statement checks that the file exists
-../input/fmliquarterly.parquet ../input/mtbimonthly.parquet: | ../input
+../input/fmliquarterly.parquet ../input/mtbimonthly_NIPACAT.parquet: | ../input
 	if [ -e ../../createconsumptionvariables/output/$(@F) ] ; then ln -s ../../createconsumptionvariables/output/$(@F) $@ ; else exit 1; fi	
 
 ../input/cohortvariables.parquet  ../input/interviewvariables.parquet:  | ../input
@@ -41,15 +39,11 @@ $(folders):
 ../input/rebate2001cuid.parquet  ../input/rebate2001interview.parquet ../input/rebate2001monthly.parquet:  | ../input
 	if [ -e ../../processrebatemodule/output/$(@F) ] ; then ln -s ../../processrebatemodule/output/$(@F) $@ ; else exit 1; fi	
 
-../input/nipavariablesinterview.parquet ../input/nipavariablesmonthly.parquet :  | ../input
-	if [ -e ../../nipavariables/output/$(@F) ] ; then ln -s ../../nipavariables/output/$(@F) $@ ; else exit 1; fi	
-
-
 # this is the recipe
-../output/psmjexpendituresinterview.parquet ../output/psmjexpendituresmonthly.parquet: psmjexpenditures.py ../input/fmliquarterly.parquet ../input/mtbimonthly.parquet
+../output/nipaexpendituresinterview.parquet ../output/nipaexpendituresmonthly.parquet: nipaexpenditures.py ../input/fmliquarterly.parquet ../input/mtbimonthly_NIPACAT.parquet
 	rm -r ../output
 	mkdir ../output
 	python $<
 
-../output/psmjvariablesinterview.parquet ../output/psmjvariablesmonthly.parquet: psmjmergedata.py ../output/psmjexpendituresinterview.parquet ../output/psmjexpendituresmonthly.parquet $(input)
+../output/nipavariablesinterview.parquet ../output/nipavariablesmonthly.parquet: nipamergedata.py ../output/nipaexpendituresinterview.parquet ../output/nipaexpendituresmonthly.parquet $(input)
 	python $<
