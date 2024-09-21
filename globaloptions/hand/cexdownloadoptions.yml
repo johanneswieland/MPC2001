@@ -1,5 +1,5 @@
 # sets parameters for downloading data from the BLS
-CEX_startdate: '2000'
-CEX_enddate: '2002'
+CEX_startdate: '1999'
+CEX_enddate: '2003'
 CEX_format: 'comma'
 
