@@ -96,20 +96,21 @@ for year in {'01'}:
                   )
 
 
-   df['INSAMPLE RBT'+year] = (df['INSAMPLE'+year]) & (df['EVER RBT INDICATOR']>=1)
-
+   df['INSAMPLE RBT'+year] = (df['INSAMPLE'+year]) & (df['EVER RBT' + year + ' INDICATOR']>=1)
+stop
+# too much missing data
 #%%
 # Drop all the individual filters
 df.drop([colname for colname in df if colname.endswith('_filter')], axis=1, inplace=True)
 
 # checking sample size is correct (with the larger sample, there are 3 missing insample and 2 missing rbt)
-print('Checking Sample Size is Unchanged.\n Expect 17229 insample, 28843 insamplelvl, and 10343 insample rbt')
-print('Insample = ' + str(df['INSAMPLE'].sum()))
-print('Insamplelvl = ' + str(df['INSAMPLELVL'].sum()))
-print('Insample rbt = ' + str(df['INSAMPLE RBT'].sum()))
-assert df['INSAMPLE'].sum() == 17229
-assert df['INSAMPLELVL'].sum() == 28843
-assert df['INSAMPLE RBT'].sum() == 10343
+# print('Checking Sample Size is Unchanged.\n Expect 17229 insample, 28843 insamplelvl, and 10343 insample rbt')
+print('Insample = ' + str(df['INSAMPLE01'].sum()))
+print('Insamplelvl = ' + str(df['INSAMPLELVL01'].sum()))
+print('Insample rbt = ' + str(df['INSAMPLE RBT01'].sum()))
+assert df['INSAMPLE'].sum() == 12018
+# assert df['INSAMPLELVL'].sum() == 28843
+assert df['INSAMPLE RBT'].sum() == 5875
 #%%
 # ------------------------------------------------------------------------
 # Load monthly data and add sample filter
@@ -120,7 +121,7 @@ dfmonthly = pd.read_parquet('../input/psmjvariablesmonthly.parquet')
 # keep only 2007-2009
 #dfmonthly = dfmonthly.loc[pd.IndexSlice[:,:,'2007':'2009',:],:]
 
-dfmonthly = dfmonthly.merge(df[['INSAMPLE', 'INSAMPLELVL', 'INSAMPLE RBT']], 
+dfmonthly = dfmonthly.merge(df[['INSAMPLE01', 'INSAMPLELVL01', 'INSAMPLE RBT01']], 
                             how='left', left_index=True, right_index=True)
 
 # ------------------------------------------------------------------------
@@ -145,7 +146,7 @@ for frequency, df0 in {'interview': df, 'monthly': dfmonthly}.items():
    df0.index = df0.index.rename([x.lower() for x in list(df0.index.names)])
 
    # save as stata and csv
-   dates_format = {'intdate': 'tm','firstrbtdate':'tm','firstrbtintdate':'tm','firstrbt01date':'tm','firstrbt01intdate':'tm'}
+   dates_format = {'intdate': 'tm','firstrbt01date':'tm','firstrbt01intdate':'tm'}
    if frequency=='monthly':
       dates_format['date'] = 'tm'
    
