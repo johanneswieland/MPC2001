@@ -41,9 +41,8 @@ $(folders):
 
 
 # we first delete the output folders to make sure all data is new 
-$(output):  variablelabels.do Table2001_aggdef.do Table2001_bea_all.do Table2001_bias.do $(input)
+$(output):  variablelabels.do Table2001_aggdef.do Table2001_bea_all.do $(input)
 #2001 Tables and charts
 	stata-se -b run variablelabels.do
 	stata-se -b run Table2001_aggdef.do
 	stata-se -b run Table2001_bea_all.do
-	stata-se -b run Table2001_bias.do
