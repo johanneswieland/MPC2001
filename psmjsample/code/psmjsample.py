@@ -63,7 +63,7 @@ df['HH_size_filter'] = ((abs(df['d_NUM_ADULTS'])<=3) & (abs(df['d_PERSLT18'])<=3
 # 8. Drop if any (non-lead/lag/income/nipa) variable or missing
 
 excludelist = ['NEWTRUCKS','NEWPCARS','EDUCA', 'MAINRP', 'VEHINS', 'ENTERT',  'VRNTLO',  'VEHFIN',  'SHELT', 'pcars_n','cars_downpayment','trucks_n','usedautos','usedlighttrucks' ,'mv_parts', 'net_used', 'cars_nu','cars_n', 'home_dur', 'rec_dur', 'other_dur', 'durable_nipa', 'foodbev_home', 'clothing', 'gasoline', 'other_nondur', 'nondurable_nipa', 'house_nipa', 'health_nipa', 'transportation', 'rec_service', 'acc_service', 'fin_service', 'other_service', 'service_nipa','pce', 'tuition','mv_parts_ser', 'sndexp_nipa']
-shortlist = ['d_TOTEXP2','d_NDEXP','d_SNDEXP','d_FOODBEVS','FOODBEVS', 'AGE','d_AGE', 'd_NUM_ADULTS','d_PERSLT18','TOTEXP2','NDEXP','SNDEXP','l_TOTEXP2', 'l_FOODBEVS', 'd_l_FOODBEVS', 'd_l_TOTEXP2', 'd_l_NDEXP']
+shortlist = ['d_TOTEXP2','d_NDEXP','d_SNDEXP','d_FOODBEVS','FOODBEVS', 'AGE','d_AGE', 'd_NUM_ADULTS','d_PERSLT18','TOTEXP2','NDEXP','SNDEXP','l_TOTEXP2', 'l_FOODBEVS', 'd_l_FOODBEVS', 'd_l_TOTEXP2', 'd_l_NDEXP', 'LINCOME']
 
 
 df['Not_missing_filter01'] = df[shortlist].notna().all(axis=1)
