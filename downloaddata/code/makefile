@@ -8,7 +8,8 @@ input = ../input/cexdownloadoptions.yml
 
 # This generates the list of zip files we expect 	
 output=../output/cexdownload.zip  \
-		../output/pceexpenditure.parquet
+		../output/pceexpenditure.parquet \
+		../output/pce_apparel_health.csv
 
 
 ## Recipes
@@ -30,6 +31,9 @@ $(folders):
 # this is the recipe that creates the zip file with cex data  --downloadopt ../input/cexdownloadoptions.yml
 ../output/pceexpenditure.parquet: pcefromBEA.py
 	python pcefromBEA.py
+
+../output/pce_apparel_health.csv: pull_pce_detail.py
+	python pull_pce_detail.py
 
 
 # This is the link to ICPSR but it requires log-in and agreement. R has a package called icpsrdata that could automate this process
