@@ -1,0 +1,26 @@
+mapping = {}
+
+mapping['Recreational books (part of 90)'] = 60
+mapping['Jewelry and watches (part of 119)'] = 63
+mapping['Therapeutic appliances and equipment (42)'] = 66
+mapping['Food and beverages purchased for off-premises consumption'] = 73
+mapping['Clothing and footwear'] = 104
+mapping['Gasoline and other energy goods'] = 113
+mapping['Pharmaceutical and other medical products (40 and 41)'] = 121
+mapping['Recreational items (parts of 80, 92, and 93)'] = 126
+mapping['Household supplies (parts of 32 and 36)'] = 131
+mapping['Personal care products (part of 118)'] = 137
+mapping['Tobacco (127)'] = 141
+mapping['Magazines, newspapers, and stationery (part of 90)'] = 142
+mapping['Household utilities'] = 165
+mapping['Health care'] = 172
+mapping['Public transportation'] = 199
+mapping['Purchased meals and beverages (102)'] = 236
+mapping['Communication'] = 281
+mapping['Day care and nursery schools'] = 296
+mapping['Professional and other services (121)'] = 298
+mapping['Personal care and clothing services (14 and parts of 17 and 118)'] = 307
+mapping['Domestic services'] = 328
+mapping['Moving, storage, and freight services'] = 329
+mapping['Repair of household appliances'] = 331
+mapping['Other household services'] = 332

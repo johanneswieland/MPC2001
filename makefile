@@ -13,10 +13,12 @@ all:
 	. venv/bin/activate && make -C psmjvariables/code
 	. venv/bin/activate && make -C psmjsample/code
 	. venv/bin/activate && make -C psmjregressions/code
+	. venv/bin/activate && make -C jpsexpenditure/code
 	. venv/bin/activate && make -C survey_prof_fore/code
 	. venv/bin/activate && make -C michigan_survey/code
 	. venv/bin/activate && make -C forecasting/code
 	. venv/bin/activate && make -C narrative/code
+	. venv/bin/activate && make -C model/code
 	. venv/bin/activate && make -C _finaltablesandfigures/code
 
 # virtual environment
