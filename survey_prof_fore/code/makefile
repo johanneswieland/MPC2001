@@ -22,5 +22,5 @@ $(folders):
 	python pull_SPF.py
 
 # this is the recipe 
- ../output/levels_SPF0704.dta : graph_SPF_cons_dist.do ../output/spf_rcons.dta $(input)
+ ../output/levels_SPF0102.dta : graph_SPF_cons_dist.do ../output/spf_rcons.dta $(input)
 	stata-se -b run graph_SPF_cons_dist.do
