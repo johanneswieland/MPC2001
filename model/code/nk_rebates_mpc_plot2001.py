@@ -227,7 +227,6 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
         tablenames = {
             'beta': ['$\\beta$', 'Subjective discount factor'],
             'sigma': ['$\\sigma$', 'Utility curvature on consumption'],
-            'iota': ['$\\iota$', 'Elasticity of Substitution Across Consumption Goods'],
             'share1': ['$s_1$', 'Share of JPS Nondurable Consumption in Total Consumption'],
             'eta': ['$\\eta$', 'Durable operating cost'],
             'nu': ['$\\nu$', 'Weight on disutility of labor'],
@@ -242,6 +241,7 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
             'muw_ss': [ '$\\mu_W$', 'Steady-state wage markup'],
             'theta': ['$\\theta_p$', 'Calvo parameter on price adjustment'],
             'thetaw': ['$\\theta_W$','Calvo parameter on wage adjustment'],
+            'eps': ['$\\iota$', 'Elasticity of Substitution Across Consumption Varieties'],
             'epsw': ['$\\epsilon_W$', 'Elasticity of substitution between types of labor'],
             'gyfrac': ['$gy$', 'Steady-state share of total govt spending to GDP'],
             'phib': ['$\\phi_b$', 'Debt feedback coefficient in fiscal rule'],
@@ -253,13 +253,13 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
         tableformat = ['l','S[table-format=2.3]','l']
 
         # create smaller version
-        presentation = ['sigma','iota','phi','gamma','phib']
+        presentation = ['sigma','share1','phi','gamma','phib']
         tablenames_presentation = dict()
         for para in presentation:
             tablenames_presentation[para] = tablenames[para]
 
         # nondurable version
-        nondur = ['beta','sigma','iota','share1','nu','phi','gamma','alpha','kappa','delta1','delta2','mup_ss','muw_ss','theta','thetaw','epsw','gyfrac','phib','rhor','phipi','phigap']
+        nondur = ['beta','sigma','share1','nu','phi','gamma','alpha','kappa','delta1','delta2','mup_ss','muw_ss','theta','thetaw','eps','epsw','gyfrac','phib','rhor','phipi','phigap']
         tablenames_nondur = dict()
         for para in nondur:
             tablenames_nondur[para] = tablenames[para]
