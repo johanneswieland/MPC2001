@@ -30,7 +30,7 @@ $(folders):
 
 
 # run model file and move outputs
-$(output): build_forecast_data.do forecast2001.do greenbookND_2001.do $(input)
+$(output): build_forecast_data.do forecast2001.do $(input)
 	stata-se -b run build_forecast_data.do
 	stata-se -b run forecast2001.do
 	
