@@ -1,5 +1,5 @@
 ../../model/output/calibrationnondurablesonly2001gamma.tex
-../../model/output/mpcsgammaJPS_paper.tex
+../../model/output/mpcsgammanondurablesonly2001.tex
 ../../psmjregressions/output/Table_2001_NDcompare.tex
 ../../psmjregressions/output/Table_2001_NDcomparerbtonly.tex
 ../../psmjregressions/output/bea_all.tex
