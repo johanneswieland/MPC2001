@@ -4,10 +4,7 @@
 import pandas as pd
 import requests
 import json
-import matplotlib.pyplot as plt
-import datetime
 import pandas_datareader.data as web    
-import mpc_utilities as utils
 
 
 
