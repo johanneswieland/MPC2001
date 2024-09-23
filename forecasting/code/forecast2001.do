@@ -10,7 +10,7 @@ set scheme s1color
 
 use ../output/completedata_for_forecasting.dta
 
-drop if mdate>=m(2020m1)
+drop if mdate>=m(2020m1) | mdate < m(1984m1)
 
 gen dum911 = 0
 replace dum911 = 1 if mdate==m(2001m9)
