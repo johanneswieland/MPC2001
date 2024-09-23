@@ -27,7 +27,7 @@ capture log close
 
 set scheme s1color
 
-local yearlist `"2001"'
+local yearlist `"2001" "2008"'
 
 ********************************************************************************
 * I.  READ IN DATA, CREATE REAL AND MONTHLY BASIS VARIABLES

@@ -8,7 +8,7 @@
 ../../psmjregressions/output/bea_all_longtable
 ../../narrative/output/fig_cy_pres.eps
 ../../narrative/output/fig_cy_pres01.eps
-../../narrative/output/fig_ndisprebate01.eps
+../../narrative/output/fig_rebate_ndisp01.eps
 ../../model/output/Real_JPSNondurablesfc_micro_nondurablesonly2001.eps
 ../../model/output/Real_JPSNondurablesfc_GE_nondurablesonly2001_nolegend.eps
 ../../survey_prof_fore/output/SPF_dist_0102_wactual.pdf
