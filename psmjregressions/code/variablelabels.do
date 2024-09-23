@@ -60,20 +60,14 @@ foreach frequency in "interview" "monthly"     { //
     *******************************************************************************/
 
     // Label variables
-    label variable rbtamt "Rebate Amount"
-    label variable rbtindicator "Rebate Indicator"
     label variable rbt01amt "Rebate Amount"
     label variable rbt01indicator "Rebate Indicator"
 	
 	forvalues jj=1(1)2 {
-		label variable lag`jj'rbtamt "Lag `jj' Rebate Amount"
-		label variable lag`jj'rbtindicator "Lag `jj' Rebate Indicator"
 		label variable lag`jj'rbt01amt "Lag `jj' Rebate Amount"
 		label variable lag`jj'rbt01indicator "Lag `jj' Rebate Indicator"
 	}
 	forvalues jj=1(1)1 {
-		label variable lead`jj'rbtamt "Lead `jj' Rebate Amount"
-		label variable lead`jj'rbtindicator "Lead `jj' Rebate Indicator"
 		label variable lead`jj'rbt01amt "Lead `jj' Rebate Amount"
 		label variable lead`jj'rbt01indicator "Lead `jj' Rebate Indicator"
 	}
@@ -122,10 +116,6 @@ foreach frequency in "interview" "monthly"     { //
      label variable d_nipa_usedautos "$\Delta$ Net Used Car (BEA)"
      label variable d_nipa_usedlighttrucks "$\Delta$ Net Used Truck (BEA)"
 
-    rename cat_eft_x cat_eft
-    lab var cat_eft "CU Ever Received Rebate Via"
-    lab def catvalues 0 "Non-Recipient" 1 "CHECK only recipient" 2 "EFT only recipient" 3 "Both" 9 "Recipient with missing EFT/Check information"
-    lab val cat_eft catvalues
     
     lab var lincome "Log of Pre-Tax Income"
     
