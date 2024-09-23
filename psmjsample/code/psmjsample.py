@@ -71,22 +71,6 @@ df['Not_missing_filter01'] = df[shortlist].notna().all(axis=1)
 # Separate filter for level variables
 df['Not_missing_level_filter01'] = df['Not_missing_level_filter'] = df[[col for col in shortlist if (col.startswith('d_') == False)]].notna().all(axis=1)
 
-
-# looks like an issue with shift:
-# test = df.loc[df['Wave_filter01'],:].isna().sum(axis=0)
-# l_TOTEXP2              3
-# l_TOTEXP_NMV           3
-# d_psmj_            12885
-# d_psmj_CUID        12885
-# d_psmj_ELDERLY     12885
-# d_psmj_VEHFIN      12885
-# d_VEHFIN           12885
-# d_EDUCA            12885
-# d_VEHINS           12885
-# d_psmj_CLOTHD      12885
-# d_psmj_APPAR       12885
-# d_psmj_index       12885
-# d_CARTKU           12885
 #%%
 # ------------------------------------------------------------------------
 # Combine the sample filters into one and drop all the individual filters
@@ -121,9 +105,9 @@ for year in {'01'}:
 print('Insample = ' + str(df['INSAMPLE01'].sum()))
 print('Insamplelvl = ' + str(df['INSAMPLELVL01'].sum()))
 print('Insample rbt = ' + str(df['INSAMPLE RBT01'].sum()))
-# assert df['INSAMPLE01'].sum() == 12018
+assert df['INSAMPLE01'].sum() == 12363
 # assert df['INSAMPLELVL'].sum() == 28843
-# assert df['INSAMPLE RBT01'].sum() == 5875
+assert df['INSAMPLE RBT01'].sum() == 6220
 
 # Drop all the individual filters
 df.drop([colname for colname in df if colname.endswith('_filter')], axis=1, inplace=True)
