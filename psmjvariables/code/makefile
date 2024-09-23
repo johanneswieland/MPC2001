@@ -12,8 +12,8 @@ input= \
 		../input/rebate2001cuid.parquet \
 		../input/rebate2001interview.parquet \
 		../input/rebate2001monthly.parquet \
-		../input/nipavariablesinterview.parquet \
-		../input/nipavariablesmonthly.parquet \
+		../input/nipaexpendituresinterview.parquet \
+		../input/nipaexpendituresmonthly.parquet \
 
 
 # This generates the list of processed data files	
@@ -41,7 +41,7 @@ $(folders):
 ../input/rebate2001cuid.parquet  ../input/rebate2001interview.parquet ../input/rebate2001monthly.parquet:  | ../input
 	if [ -e ../../processrebatemodule/output/$(@F) ] ; then ln -s ../../processrebatemodule/output/$(@F) $@ ; else exit 1; fi	
 
-../input/nipavariablesinterview.parquet ../input/nipavariablesmonthly.parquet :  | ../input
+../input/nipaexpendituresinterview.parquet ../input/nipaexpendituresmonthly.parquet :  | ../input
 	if [ -e ../../nipavariables/output/$(@F) ] ; then ln -s ../../nipavariables/output/$(@F) $@ ; else exit 1; fi	
 
 

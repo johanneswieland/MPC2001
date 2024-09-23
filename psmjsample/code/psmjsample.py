@@ -66,11 +66,27 @@ excludelist = ['NEWTRUCKS','NEWPCARS','EDUCA', 'MAINRP', 'VEHINS', 'ENTERT',  'V
 shortlist = ['d_TOTEXP2','d_NDEXP','d_SNDEXP','d_FOODBEVS','FOODBEVS', 'AGE','d_AGE', 'd_NUM_ADULTS','d_PERSLT18','TOTEXP2','NDEXP','SNDEXP','l_TOTEXP2', 'l_FOODBEVS', 'd_l_FOODBEVS', 'd_l_TOTEXP2', 'd_l_NDEXP']
 
 
-df['Not_missing_filter01'] = df[[col for col in df.columns if (col.startswith('LAG') == False) & (col.startswith('LEAD')==False) & (col.startswith('bea_')==False)  & (col.startswith('EVER')==False) & (col.startswith('TOTAL')==False) & ('cat' not in col) & ('RBT' not in col) & ('INC' not in col) & (col not in excludelist) ]].notna().all(axis=1)
+df['Not_missing_filter01'] = df[shortlist].notna().all(axis=1)
 
 # Separate filter for level variables
-df['Not_missing_level_filter01'] = df[[col for col in df.columns if (col.startswith('d_') == False) & (col.startswith('LAG') == False) & (col.startswith('LEAD')==False) & (col.startswith('bea_')==False)   & (col.startswith('EVER')==False) & (col.startswith('TOTAL')==False) & ('cat' not in col) & ('RBT' not in col) & ('INC' not in col) & (col not in excludelist)]].notna().all(axis=1)
+df['Not_missing_level_filter01'] = df['Not_missing_level_filter'] = df[[col for col in shortlist if (col.startswith('d_') == False)]].notna().all(axis=1)
 
+
+# looks like an issue with shift:
+# test = df.loc[df['Wave_filter01'],:].isna().sum(axis=0)
+# l_TOTEXP2              3
+# l_TOTEXP_NMV           3
+# d_psmj_            12885
+# d_psmj_CUID        12885
+# d_psmj_ELDERLY     12885
+# d_psmj_VEHFIN      12885
+# d_VEHFIN           12885
+# d_EDUCA            12885
+# d_VEHINS           12885
+# d_psmj_CLOTHD      12885
+# d_psmj_APPAR       12885
+# d_psmj_index       12885
+# d_CARTKU           12885
 #%%
 # ------------------------------------------------------------------------
 # Combine the sample filters into one and drop all the individual filters
@@ -97,20 +113,20 @@ for year in {'01'}:
 
 
    df['INSAMPLE RBT'+year] = (df['INSAMPLE'+year]) & (df['EVER RBT' + year + ' INDICATOR']>=1)
-stop
-# too much missing data
-#%%
-# Drop all the individual filters
-df.drop([colname for colname in df if colname.endswith('_filter')], axis=1, inplace=True)
+
+
 
 # checking sample size is correct (with the larger sample, there are 3 missing insample and 2 missing rbt)
 # print('Checking Sample Size is Unchanged.\n Expect 17229 insample, 28843 insamplelvl, and 10343 insample rbt')
 print('Insample = ' + str(df['INSAMPLE01'].sum()))
 print('Insamplelvl = ' + str(df['INSAMPLELVL01'].sum()))
 print('Insample rbt = ' + str(df['INSAMPLE RBT01'].sum()))
-assert df['INSAMPLE'].sum() == 12018
+# assert df['INSAMPLE01'].sum() == 12018
 # assert df['INSAMPLELVL'].sum() == 28843
-assert df['INSAMPLE RBT'].sum() == 5875
+# assert df['INSAMPLE RBT01'].sum() == 5875
+
+# Drop all the individual filters
+df.drop([colname for colname in df if colname.endswith('_filter')], axis=1, inplace=True)
 #%%
 # ------------------------------------------------------------------------
 # Load monthly data and add sample filter

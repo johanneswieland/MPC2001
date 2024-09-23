@@ -53,7 +53,7 @@ dfmtbi = dfmtbi.merge(dfmtbi_add, how='left', right_index=True, left_index=True)
 timefreq = 'MS'
 
 # could run two versions, monthly or interview level
-for expenditure_frequency in ['monthly', 'interview']: 
+for expenditure_frequency in ['interview', 'monthly']: 
 
     # existing data already at monthly frequency
     if expenditure_frequency=='monthly':

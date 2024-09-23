@@ -42,7 +42,7 @@ for expenditure_frequency in ['monthly', 'interview']:  #
     rebate01 = pd.read_parquet('../input/rebate2001' + expenditure_frequency + '.parquet')
 
     #Load NIPA Variables and convert index to uppercase
-    nipa =  pd.read_parquet('../input/nipavariables' + expenditure_frequency + '.parquet')                    
+    nipa =  pd.read_parquet('../input/nipaexpenditures' + expenditure_frequency + '.parquet')                    
     nipa.index = nipa.index.rename([x.upper() for x in list(nipa.index.names)])
 
    
