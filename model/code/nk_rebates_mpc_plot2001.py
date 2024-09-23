@@ -201,7 +201,6 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
                             ax.legend_ = None
                             # plt.savefig('../output/mpc' + parameter + defl + varname.replace(' ','') + GE + info + parasetname + '.eps')
                             plt.savefig('../output/' + defl + '_' + varname.replace(' ','') + fc + '_' + GE + '_' + parasetname + psmj + '_nolegend.eps')
-                            plt.show()
                             plt.close()
                         
  
@@ -227,27 +226,22 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
 
         tablenames = {
             'beta': ['$\\beta$', 'Subjective discount factor'],
-            'psi': ['$\\psi$', 'Weight on durable service flow'],
-            'sigma': ['$\\sigma$', 'Utility curvature on nondurable consumption'],
-            'sigmad': ['$\\sigma^d$', 'Utility curvature on durable service flow'],
-            'thetad': ['$\\theta^d$', 'Calvo parameter on durable adjustment'],
+            'sigma': ['$\\sigma$', 'Utility curvature on consumption'],
+            'iota': ['$\\iota$', 'Elasticity of Substitution Across Consumption Goods'],
+            'share1': ['$s_1$', 'Share of JPS Nondurable Consumption in Total Consumption'],
             'eta': ['$\\eta$', 'Durable operating cost'],
             'nu': ['$\\nu$', 'Weight on disutility of labor'],
             'phi': ['$\\phi$', 'Inverse of the Frisch elasticity of labor supply'],
             'gamma': ['$\\gamma$', 'Fraction of Hand-to-Mouth consumers'],
-            'mpx': ['$\\vartheta$', 'Hand-to-Mouth MPC on durables'],
-            'deltad': ['$\\delta^d$', 'Depreciation of durable consumption goods'],
             'alpha': ['$\\alpha$', 'Exponent on private capital in production function'],
             'delta': ['$\\delta$', 'Depreciation of private capital'],
             'kappa': ['$\\kappa$', 'Investment adjustment cost parameter'],
             'delta1': ['$\\delta_1$', 'Parameter on linear term of capital utilization cost'],
             'delta2': ['$\\delta_2$', 'Parameter on quadratic term of capital utilization cost'],
-            'zeta': ['$\\zeta$', 'Inverse relative supply elasticity of durable goods'],
             'mup_ss': ['$\\mu_p$', 'Steady-state price markup'],
             'muw_ss': [ '$\\mu_W$', 'Steady-state wage markup'],
             'theta': ['$\\theta_p$', 'Calvo parameter on price adjustment'],
             'thetaw': ['$\\theta_W$','Calvo parameter on wage adjustment'],
-            'eps': ['$\\epsilon_p$', 'Elasticity of substitution between types of goods'],
             'epsw': ['$\\epsilon_W$', 'Elasticity of substitution between types of labor'],
             'gyfrac': ['$gy$', 'Steady-state share of total govt spending to GDP'],
             'phib': ['$\\phi_b$', 'Debt feedback coefficient in fiscal rule'],
@@ -259,24 +253,18 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
         tableformat = ['l','S[table-format=2.3]','l']
 
         # create smaller version
-        presentation = ['sigma','phi','gamma','thetad','sigmad','mpx','psi','deltad','zeta','phib']
+        presentation = ['sigma','iota','phi','gamma','phib']
         tablenames_presentation = dict()
         for para in presentation:
             tablenames_presentation[para] = tablenames[para]
 
         # nondurable version
-        nondur = ['beta','psi','sigma','nu','phi','gamma','alpha','kappa','delta1','delta2','mup_ss','muw_ss','theta','thetaw','eps','epsw','gyfrac','phib','rhor','phipi','phigap']
+        nondur = ['beta','sigma','iota','share1','nu','phi','gamma','alpha','kappa','delta1','delta2','mup_ss','muw_ss','theta','thetaw','epsw','gyfrac','phib','rhor','phipi','phigap']
         tablenames_nondur = dict()
         for para in nondur:
             tablenames_nondur[para] = tablenames[para]
 
-        # durable version
-        dur = ['sigmad','thetad','deltad','eta','mpx','zeta']
-        tablenames_dur = dict()
-        for para in dur:
-            tablenames_dur[para] = tablenames[para]
-
-        for table, tablesave in zip([tablenames, tablenames_presentation, tablenames_nondur, tablenames_dur],['calibration','calibration_small','calibration_nondur','calibration_dur']):
+        for table, tablesave in zip([tablenames, tablenames_presentation, tablenames_nondur],['calibration','calibration_small','calibration_nondur']):
             f = open('../output/' + tablesave + parasetname + parameter + '.tex', 'w')
             f.write('\\begin{table}[htbp]\n')
             if tablesave!='calibration_small':
@@ -304,12 +292,6 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
             f.write('Notes: The model is calibrated at a monthly frequency. ')
             if 'gamma' in table.keys():
                 f.write('The parameter $\\gamma$ is calibrated to either 0.3, 0.5, or 0.9, which corresponds to the aggregate MPC in the model. ')
-            if 'thetad' in table.keys():
-                f.write('The parameter $\\theta^d$ is calibrated such that for each value of $\\gamma$ to model replicates our empirical targets for the short-term interest elasticity of durable demand. ')
-                f.write('For example, when $\\gamma=' + str(round(ss['gamma'], 2)) + '$, then $\\theta^d=' + str(round(ss['thetad'], 3)) + '$. ')
-            if 'mpx' in table.keys():
-                f.write('The parameter $\\vartheta$ is calibrated  to match an overall MPC on motor vehicles of 0.3 when $\\gamma=0.3$ and of 0.4 when $\\gamma=0.5$ or $\gamma=0.9$. ')
-                f.write('This yields  $\\vartheta=' + str(round(0.3/0.3, 2)) + '$ when $\\gamma=0.3$,  $\\vartheta=' + str(round(0.4/0.5, 2)) + '$ when $\\gamma=0.5$, and  $\\vartheta=' + str(round(0.4/0.9, 2)) + '$ when $\\gamma=0.9$. ')
             f.write('See the text for details. ')
             f.write('\\end{minipage}\n')
             f.write('\\label{tab:' + tablesave + '}\n')    
