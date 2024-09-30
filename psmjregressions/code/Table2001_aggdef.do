@@ -63,7 +63,7 @@ local absorbvars "intdate"
 
 
 local controlvars "age d_num_adults d_perslt18"
-local versionlist `"2SLS" "did_imputation"' 
+local versionlist `"2SLS" "2SLSlag" "did_imputation"' 
 local samplelist `"" "& everrbt01indicator"'
 
 keep if insample01
@@ -155,12 +155,18 @@ local variablename "`: variable label `depvar''"
 		
 	}
 	
-	if "`version'" == "2SLSlag"{ // Column 1: TWFE with no lag
+	if "`version'" == "2SLSlag"{ // Column 1: TWFE with lag
 			
 				
 	*Estimates coefficients 
 	noi di "ivreghdfe  `depvar' (rbt01amt lag1rbt01amt = rbt01indicator lag1rbt01indicator)  `controlvars'  [w=finlwt21] if insample01 `rebatesample', cluster(cuid) absorb(intdate) "
 	ivreghdfe  `depvar' (rbt01amt lag1rbt01amt = rbt01indicator lag1rbt01indicator)   `controlvars'   [w=finlwt21] if insample01 `rebatesample', cluster(cuid) absorb(intdate)
+	
+	*6 month coefficient incorporates information from lagged spending
+
+	nlcom (2*_b[rbt01amt] + _b[ lag1rbt01amt])
+		local temp_mpc6mo: di %3.2f r(b)[1,1]
+		local temp_mpc6mo_se: di %3.2f sqrt(r(V)[1,1])
 	
 	local filename `"Table_2001_NDcompare_wlag`rebatename'"'
 	local filename2 `"Table_2001_NDcompare_wlag_pres`rebatename'"'
@@ -195,7 +201,14 @@ local variablename "`: variable label `depvar''"
 	if "`version'" == "did_imputation"{ 
 		qui estadd local implied_mpc "`temp_mpc'"
 	}
+	
+	if "`version'" == "2SLSlag"{
 		
+		qui estadd local mpc6 "`temp_mpc6mo'"
+		qui estadd local mpc6se "(`temp_mpc6mo_se')"
+
+
+	}
 		
 	local groups1 `"`groups1' &  \multicolumn{1}{c}{`: variable label `depvar''} "' 
 	local regnumber = `regnumber' + 1
@@ -236,6 +249,15 @@ local variablename "`: variable label `depvar''"
 	local stats_fmt " %12.0fc"
 	local stats_label `" `"Implied MPC"' `"Observations"' "'
 	local title `"Household  Spending Response to Rebate by Subcategory: BJS"'
+
+	}
+	
+	if "`version'" == "2SLSlag"{ 
+	local stats "mpc6 mpc6se N"
+	local stats_fmt " %12.0fc"
+	local stats_label `" `"6-Month MPC"' `"6-Month MPC S.E."' `"Observations"' "'
+	local title `"Household  Spending Response to Rebate by Subcategory: 2SLS with Lag"'
+
 
 	}
 	local num_stats: word count `stats' 
