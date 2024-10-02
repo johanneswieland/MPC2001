@@ -11,7 +11,7 @@ import pandas_datareader.data as web
 # ------------------------------------------------------------------------
 # Downloads Data from BEA
 # ------------------------------------------------------------------------
-UserID = '3235FBB2-CE58-418E-8D35-2893BB16F5FB'
+UserID = 'PLACE BEA KEY HERE'
 TableType = 'NIUnderlyingDetail'
 TableNames = ['U20405','U20404','U20406']
 TableTitles = ['pceexpenditure','pceexpenditureprice','pceexpenditurereal']
