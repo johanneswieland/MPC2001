@@ -31,7 +31,7 @@ set scheme s1color
 ********************************************************************************
 
 *Download data from FRED
-set fredkey b2d9da12107485ec086c5691d41d626c
+set fredkey INSERT FREDKEY HERE
 
 import fred DSPI UNRATE PCE PCEND PCES PCEDG DNRGRC1M027SBEA PMSAVE PSAVERT PCEPI  ///
   DNDGRG3M086SBEA DSERRG3M086SBEA DDURRG3M086SBEA PCEPILFE DNRGRG3M086SBEA DFXARG3M086SBEA ///
