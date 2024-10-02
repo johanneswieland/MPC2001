@@ -4,7 +4,7 @@ Replication code for "Using Macro Counterfactuals to Assess Plausibility: An Ill
 
 Tested on MAC and Linux using STATA version 16.1 and Python 3.11.
 
-**The project is set up to work in a MAC or LINUX enivironment (UNIX more generally).** We provide instructions for Windows in the Github repository for the paper [Micro MPCs and Macro Counterfactuals: The Case of the 2008 Rebates]([#how-to-run-mpc-project-on-a-windows-computer](https://github.com/JakeOrchard/MPC2008-Public).
+**The project is set up to work in a MAC or LINUX enivironment (UNIX more generally).** We provide instructions for Windows in the Github repository for the paper [https://github.com/JakeOrchard/MPC2008-Public](Micro MPCs and Macro Counterfactuals: The Case of the 2008 Rebates).
 
 ## Permissions
 
