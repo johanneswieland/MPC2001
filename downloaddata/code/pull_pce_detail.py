@@ -19,8 +19,6 @@ TableName = 'U20305'
 Frequency = 'M'
 Year = '2000,2001,2002'
 
-#proxies = {'http': 'http://proxy-t.frb.gov:8080', 'https': 'http://proxy-t.frb.gov:8080' }
-#headers = {'User-Agent': 'jake.orchard@frb.gov'}
 
 
 
