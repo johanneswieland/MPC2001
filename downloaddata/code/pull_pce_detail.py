@@ -13,7 +13,7 @@ import pandas_datareader.data as web
 # ------------------------------------------------------------------------
 # Downloads Data from BEA
 # ------------------------------------------------------------------------
-UserID = '3235FBB2-CE58-418E-8D35-2893BB16F5FB'
+UserID = 'ADD BEA Key HERE'
 TableType = 'NIUnderlyingDetail'
 TableName = 'U20305'
 Frequency = 'M'
