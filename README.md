@@ -29,6 +29,9 @@ The first command builds the Python virtual environment, the second command exec
 
 Once `make` executes successfully, the paper figures and tables are available in the folder `_finaltablesandfigures/output`.
 
+## Expected Running Time
+
+Around 12 hours. 
 
 # Order of Tasks to Create Final Output
 
