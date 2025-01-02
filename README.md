@@ -21,7 +21,7 @@ You will need your own FREDKEY and BEA keys to download the source data. Place t
 
 We use `make` to run the entire project. `cd` into the base directory and run the following commands in your terminal:
 
-1.`make install`
+1. `make install`
   
 2. `make venv`
 
