@@ -17,7 +17,7 @@ Orchard, Jacob, Valerie A. Ramey, and Johannes F. Wieland. Using Macro Counterfa
 
 # To Run Entire Project
 
-You will need your own FREDKEY and BEA keys to download the source data. Place the FREDKEY in line 34 of `MPC/forecasting/code/build_forecast_data.do` and place the BEA key in line 14 of `MPC/downloaddata/code/pcefromBEA.py`. 
+You will need your own FREDKEY and BEA keys to download the source data. Place the FREDKEY in line 34 of `MPC/forecasting/code/build_forecast_data.do` and place the BEA key in line 14 of `MPC/downloaddata/code/pcefromBEA.py` and line 16 of  `MPC/downloaddata/code/pull_pce_detail.py`. 
 
 We use `make` to run the entire project. `cd` into the base directory and run the following commands in your terminal:
 
