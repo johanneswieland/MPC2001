@@ -33,7 +33,7 @@ Once `make` executes successfully, the paper figures and tables are available in
 
 ## Expected Running Time
 
-Around 12 hours. 
+Around 2 hours. 
 
 # Order of Tasks to Create Final Output
 
