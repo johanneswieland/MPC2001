@@ -48,10 +48,10 @@ The `makefile` in the main folder shows the order of execution of the subfolders
 
 # Data Citation
 
-This project downloads data from the Bureau of Labor Statistics (BLS), the Federal Reserve Bank of Philadelphia (the SPF surveys), the University of Michigan Survey Research Center,  and the Bureau of Economic Analysis (BEA). 
+This project code downloads data from the Bureau of Labor Statistics (BLS), the Federal Reserve Bank of Philadelphia (the SPF surveys), the University of Michigan Survey Research Center,  and the Bureau of Economic Analysis (BEA). The user of these replication files will be under the license requirments of these files when they run the replication code.  
 
 
-## Downloaded Data Citation (need to add FRED data)
+## Downloaded Data Citation 
 
 Bureau of Economic Analysis (2000-2002). ‘National income and product accounts’, US
 Department of Commerce
@@ -69,11 +69,11 @@ Survey Research Center (2001). ‘Surveys of consumers’, University of Michiga
 All datasets that are not downloaded directly by the code are included in the folder `external_data`.
 
 | Name        | Source | Citation    | License |
-|-------------|-----|---------------|
+|-------------|-----|---------------|---------------|
 |    rebates.xlsx      | Authors and  Shapiro and Slemrod Table 6 and Sahm, Shapiro and Slemrod | Shapiro, and Slemrod (2003), Sahm, Shapiro, Slemord (2012)   | Creative Commons and GNU General Public License v3.0*|
 | JPS_consumption_rebate.xlsx     | Authors and BEA | BEA (2000-2002)    | Public domain and GNU General Public License v3.0|
 | ce-pumd-interview-diary-dictionary.xlsx      | BLS | BLS (2024)      | Public domain|
-| BEA_labels.xls      | Authors |       | GNU General Public License v3.0|
+| BEA_labels.xls      | Authors |    -   | GNU General Public License v3.0|
 
 
 *Authors use "GNU General Public License v3.0" while Sahm, Shapiro, and Slemord (2012) use the Creative Commons license. The creative commons license is copied in this replication folder under license_sss.
