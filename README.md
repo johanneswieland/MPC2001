@@ -12,7 +12,7 @@ You can use our code with proper attribution.
 
 Please cite as:
 
-Orchard, Jacob, Valerie A. Ramey, and Johannes F. Wieland. Using Macro Counterfactuals to Assess Plausibility: An Illustration using the 2001 Rebate MPCs.
+Orchard, Jacob, Valerie A. Ramey, and Johannes F. Wieland. Using Macro Counterfactuals to Assess Plausibility: An Illustration using the 2001 Rebate MPCs. Economic Journal, Forthcoming.
 
 ### Statement about Rights
 
@@ -71,9 +71,9 @@ All datasets that are not downloaded directly by the code are included in the fo
 | Name        | Source | Citation    | License |
 |-------------|-----|---------------|---------------|
 |    rebates.xlsx      | Authors and  Shapiro and Slemrod Table 6 and Sahm, Shapiro and Slemrod | Shapiro, and Slemrod (2003), Sahm, Shapiro, Slemord (2012)   | Creative Commons and GNU General Public License v3.0*|
-| JPS_consumption_rebate.xlsx     | Authors and BEA | BEA (2000-2002)    | Public domain and GNU General Public License v3.0|
+| JPS_consumption_rebate.xlsx     | Authors and BEA | Orchard, Ramey, Wieland (Forthcoming) and BEA (2000-2002)    | Public domain and GNU General Public License v3.0|
 | ce-pumd-interview-diary-dictionary.xlsx      | BLS | BLS (2024)      | Public domain|
-| BEA_labels.xls      | Authors |    -   | GNU General Public License v3.0|
+| BEA_labels.xls      | Authors |    Orchard, Ramey, Wieland (Forthcoming)   | GNU General Public License v3.0|
 
 
 *Authors use "GNU General Public License v3.0" while Sahm, Shapiro, and Slemord (2012) use the Creative Commons license. The creative commons license is copied in this replication folder under license_sss.
@@ -84,6 +84,8 @@ Department of Commerce
 
 Bureau of Labor Statistics (2024). ‘Consumer expenditure survey’, US Department of
 Labor.
+
+Orchard, Jacob, Valerie A. Ramey, and Johannes F. Wieland. Using Macro Counterfactuals to Assess Plausibility: An Illustration using the 2001 Rebate MPCs. Economic Journal, Forthcoming.
 
 Sahm, Claudia R, Matthew D Shapiro, and Joel Slemrod, 2012. “Check in the mail
 or more in the paycheck: does the effectiveness of fiscal stimulus depend on how it
