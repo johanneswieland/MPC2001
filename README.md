@@ -48,7 +48,7 @@ The `makefile` in the main folder shows the order of execution of the subfolders
 
 # Data Citation
 
-This project downloads data from the Bureau of Labor Statistics (BLS), and the Bureau of Economic Analysis (BEA). It includes public data from the University of Michigan Survey Research Center, the Federal Reserve Bank of Philadelphia (the SPF surveys) and the Federal Reserve Board (Greenbook). It also includes data from Gilchrist and Zakrajsek (2012) although this data is not used in the analysis.
+This project downloads data from the Bureau of Labor Statistics (BLS), the Federal Reserve Bank of Philadelphia (the SPF surveys),  and the Bureau of Economic Analysis (BEA). It includes public data from the University of Michigan Survey Research Center,and the Federal Reserve Board (Greenbook). It also includes data from Gilchrist and Zakrajsek (2012) although this data is not used in the analysis.
 
 Bureau of Economic Analysis (2000-2002). ‘National income and product accounts’, US
 Department of Commerce
