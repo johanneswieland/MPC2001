@@ -118,21 +118,6 @@ clear
 * III. AUXILIARY DATA IMPORT - 
 ********************************************************************************
 
-* Rebates
-
-import delimited "../input/rebates.csv", encoding(ISO-8859-2)  
-gen mdate = m(1959m1) + _n-1
-tsset mdate, m
-
-label var nrebate "nominal rebate"
-
-sort mdate
-tempfile rebate
-save `rebate'
-
-clear
-
-
 
 clear
 
@@ -163,10 +148,8 @@ gen mdate = m(1959m1) + _n-1
 tsset mdate, m
 
 label var ncndur_jpscat "nominal consumption, JPS nondurable categories, monthly"
-label var nrebate "nominal rebate 2001, monthly"
 
-rename nrebate nrebate2001
-keep mdate nrebate2001 ncndur_jpscat
+keep mdate  ncndur_jpscat
 tempfile jpsnd
 save `jpsnd'
 
