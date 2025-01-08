@@ -14,6 +14,13 @@ Please cite as:
 
 Orchard, Jacob, Valerie A. Ramey, and Johannes F. Wieland. Using Macro Counterfactuals to Assess Plausibility: An Illustration using the 2001 Rebate MPCs.
 
+### Statement about Rights
+
+   The authors of the manuscript have legitimate access to and permission to use the data used in this manuscript.
+    
+    The authors of the manuscript have documented permission to redistribute/publish the data contained within this replication package. Appropriate permission are documented in the LICENSE.txt file.
+
+
 
 # To Run Entire Project
 
