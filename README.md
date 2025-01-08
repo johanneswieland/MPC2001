@@ -50,6 +50,9 @@ The `makefile` in the main folder shows the order of execution of the subfolders
 
 This project downloads data from the Bureau of Labor Statistics (BLS), the Federal Reserve Bank of Philadelphia (the SPF surveys), the University of Michigan Survey Research Center,  and the Bureau of Economic Analysis (BEA). 
 
+
+## Downloaded Data Citation (need to add FRED data)
+
 Bureau of Economic Analysis (2000-2002). ‘National income and product accounts’, US
 Department of Commerce
 
@@ -59,20 +62,35 @@ Labor.
 Federal Reserve Bank of Philadelphia (2001). ‘Second quarter 2001 survey of professional
 forecasters’, Survey of Professional Forecasters.
 
-
 Survey Research Center (2001). ‘Surveys of consumers’, University of Michigan.
 
 ## External datasets
 
-All datasets that are not downloaded directly by the code are included in the folder external_data.
+All datasets that are not downloaded directly by the code are included in the folder `external_data`.
 
-| Name        | Age | Department    |
+| Name        | Source | Citation    | License |
 |-------------|-----|---------------|
-| Alice       | 30  | HR            |
-| Bob         | 25  | Engineering   |
-| Charlie     | 35  | Marketing     |
-| Diana       | 28  | Finance       |
+|    rebates.xlsx      | Authors and  Shapiro and Slemrod Table 6 and Sahm, Shapiro and Slemrod | Shapiro, and Slemrod (2003), Sahm, Shapiro, Slemord (2012)   | Creative Commons and GNU General Public License v3.0*|
+| JPS_consumption_rebate.xlsx     | Authors and BEA | BEA (2000-2002)    | Public domain and GNU General Public License v3.0|
+| ce-pumd-interview-diary-dictionary.xlsx      | BLS | BLS (2024)      | Public domain|
+| BEA_labels.xls      | Authors |       | GNU General Public License v3.0|
 
+
+*Authors use "GNU General Public License v3.0" while Sahm, Shapiro, and Slemord (2012) use the Creative Commons license. The creative commons license is copied in this replication folder under license_sss.
+
+
+Bureau of Economic Analysis (2000-2002). ‘National income and product accounts’, US
+Department of Commerce
+
+Bureau of Labor Statistics (2024). ‘Consumer expenditure survey’, US Department of
+Labor.
+
+Sahm, Claudia R, Matthew D Shapiro, and Joel Slemrod, 2012. “Check in the mail
+or more in the paycheck: does the effectiveness of fiscal stimulus depend on how it
+is delivered?” American Economic Journal: Economic Policy 4(3): 216–50.
+
+Shapiro, Matthew D and Joel Slemrod, 2003b. “Did the 2001 tax rebate stimulate
+spending? Evidence from taxpayer surveys.” Tax policy and the economy 17: 83–109.
 
 
 
