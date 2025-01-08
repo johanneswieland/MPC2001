@@ -35,7 +35,7 @@ set fredkey INSERT FREDKEY HERE
 
 import fred DSPI UNRATE PCE PCEND PCES PCEDG DNRGRC1M027SBEA PMSAVE PSAVERT PCEPI  ///
   DNDGRG3M086SBEA DSERRG3M086SBEA DDURRG3M086SBEA PCEPILFE DNRGRG3M086SBEA DFXARG3M086SBEA ///
-  UMCSENT FEDFUNDS WTISPLC GS3M GS10 
+  UMCSENT FEDFUNDS WTISPLC GS3M GS10 USREC
 gen mdate = mofd(daten)
 tsset mdate, m
 order mdate
@@ -64,6 +64,7 @@ rename FEDFUNDS ffr
 rename WTISPLC npoil
 rename GS3M tbill3m
 rename GS10 tbond10y
+rename USREC recession
 
 *Merge in VIX index, which starts as a daily index 
 preserve 
@@ -131,24 +132,7 @@ save `rebate'
 
 clear
 
-* S&P 500, NBER recession dates, Gilchrist-Zakrajsek ebp, Ramey-Vine variables
-import delimited "../input/auxiliary_forecasting_data.csv" 
-gen mdate = m(1959m1) + _n-1
-tsset mdate, m
 
-gen npgasrv = npgas*rvfactor
-
-label var nstockprice "S&P 500, nominal, from Shiller"
-label var npgas "PCE deflator, gasoline and other motor fuel"
-label var rvfactor "Ramey-Vine multiplicative factor for rationing costs"
-label var npgasrv "Gas prices augmented with rationing costs"
-label var umcsent_cargas "UM Consumer sentiment, bad time to buy car b/c gas price or rationing"
-label var gz_spr "Gilchrist-Zakrajsek spread"
-label var ebp "Gilchrist-Zakrajsek version of ebp"
-
-sort mdate
-tempfile auxiliary
-save `auxiliary'
 
 clear
 
@@ -230,7 +214,6 @@ drop rcnd rcsv rcndsv /* will create them later with other similar variables */
 ********************************************************************************
 
 merge 1:1 mdate using `rebate', nogen
-merge 1:1 mdate using `auxiliary', nogen
 merge 1:1 mdate using `michigan', nogen
 merge 1:1 mdate using `jpsnd', nogen
 
@@ -256,7 +239,7 @@ foreach var in ndisp_income ncons ncnd ncsv ncndsv ncdur ncnrg {
 
 * take logs
 foreach var in ndisp_income ncons ncnd ncsv ncndsv ncdur ncnrg pcons pcnd pcsv pcndsv pcdur ///
-  pcnrg npoil nstockprice npgas npgasrv  ncndur_jpscat{
+  pcnrg npoil   ncndur_jpscat{
   	gen l`var' = ln(`var')
 	label var l`var' "log of `var'"
   }
@@ -289,7 +272,7 @@ foreach var in cndur_jpscat{
 
 * create other real variables using pce deflator
 
-foreach var in disp_income poil stockprice pgas pgasrv{
+foreach var in disp_income poil{
 	gen lr`var' = ln`var' - lpcons
 	label var lr`var' "log real `var'"
 }
@@ -301,11 +284,5 @@ save ../output/completedata_for_forecasting.dta, replace
 
 keep mdate ncndur_jpscat rcndur_jpscat
 save ../output/cndur_jpscat.dta, replace
-
-
-
-
-
-
 
 
