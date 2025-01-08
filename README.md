@@ -48,7 +48,7 @@ The `makefile` in the main folder shows the order of execution of the subfolders
 
 # Data Citation
 
-This project downloads data from the Bureau of Labor Statistics (BLS), the Federal Reserve Bank of Philadelphia (the SPF surveys), the University of Michigan Survey Research Center,  and the Bureau of Economic Analysis (BEA). It includes public data the Federal Reserve Board (Greenbook). It also includes data from Gilchrist and Zakrajsek (2012) although this data is not used in the analysis.
+This project downloads data from the Bureau of Labor Statistics (BLS), the Federal Reserve Bank of Philadelphia (the SPF surveys), the University of Michigan Survey Research Center,  and the Bureau of Economic Analysis (BEA). 
 
 Bureau of Economic Analysis (2000-2002). ‘National income and product accounts’, US
 Department of Commerce
@@ -59,15 +59,21 @@ Labor.
 Federal Reserve Bank of Philadelphia (2001). ‘Second quarter 2001 survey of professional
 forecasters’, Survey of Professional Forecasters.
 
-Federal Reserve Board of Governors, S. (2001a). ‘Current economic and financial conditions:
-Summary and outlook’, May 9, 2001 Greenbook.
-
-Federal Reserve Board of Governors, S. (2001b). ‘Current economic and financial conditions:
-Summary and outlook’, September 27, 2001 Greenbook.
-
-Gilchrist, S. and Zakrajsek, E. (2012). ‘Credit spreads and business cycle fluctuations’,
-American economic review, vol. 102(4), pp. 1692–1720.
 
 Survey Research Center (2001). ‘Surveys of consumers’, University of Michigan.
+
+## External datasets
+
+All datasets that are not downloaded directly by the code are included in the folder external_data.
+
+| Name        | Age | Department    |
+|-------------|-----|---------------|
+| Alice       | 30  | HR            |
+| Bob         | 25  | Engineering   |
+| Charlie     | 35  | Marketing     |
+| Diana       | 28  | Finance       |
+
+
+
 
 
