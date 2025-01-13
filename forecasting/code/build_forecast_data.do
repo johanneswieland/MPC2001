@@ -118,28 +118,25 @@ clear
 * III. AUXILIARY DATA IMPORT - 
 ********************************************************************************
 
+* Rebates
 
-clear
-
-* Michigan consumer survey data/rebates
-
-use ../input/clean_michigan_small.dta
-
-keep date PFE E12M DUR_R_ALL VEH_R_ALL
-
-rename date mdate
+import delimited "../input/rebates.csv", encoding(ISO-8859-2)  
+gen mdate = m(1959m1) + _n-1
 tsset mdate, m
 
-rename PFE pfe
-rename E12M e12m
-rename DUR_R_ALL dur_r_all
-rename VEH_R_ALL veh_r_all
+label var nrebate "nominal rebate"
 
 sort mdate
-tempfile michigan
-save `michigan'
+tempfile rebate
+save `rebate'
 
 clear
+
+
+
+clear
+
+
 
 *JPS ND Monthly series
 import excel "../input/JPS_consumption_rebate.xlsx", sheet("monthly") firstrow
@@ -148,8 +145,10 @@ gen mdate = m(1959m1) + _n-1
 tsset mdate, m
 
 label var ncndur_jpscat "nominal consumption, JPS nondurable categories, monthly"
+label var nrebate "nominal rebate 2001, monthly"
 
-keep mdate  ncndur_jpscat
+rename nrebate nrebate2001
+keep mdate nrebate2001 ncndur_jpscat
 tempfile jpsnd
 save `jpsnd'
 
@@ -197,7 +196,6 @@ drop rcnd rcsv rcndsv /* will create them later with other similar variables */
 ********************************************************************************
 
 merge 1:1 mdate using `rebate', nogen
-merge 1:1 mdate using `michigan', nogen
 merge 1:1 mdate using `jpsnd', nogen
 
 
@@ -267,5 +265,11 @@ save ../output/completedata_for_forecasting.dta, replace
 
 keep mdate ncndur_jpscat rcndur_jpscat
 save ../output/cndur_jpscat.dta, replace
+
+
+
+
+
+
 
 
