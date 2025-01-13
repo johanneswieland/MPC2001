@@ -45,7 +45,6 @@ clean:
 # . venv/bin/activate && make -C createrecipientexp_graphs/code
 # . venv/bin/activate && make -C createcohortgraph/code
 # . venv/bin/activate && make -C pcestatistics/code
-# . venv/bin/activate && make -C michigan_survey/code
 # . venv/bin/activate && make -C survey_prof_fore/code
 # . venv/bin/activate && make -C greenbook_forecast/code
 # . venv/bin/activate && make -C forecasting/code
