@@ -1,41 +1,9 @@
+# shell script that deletes all the input and output folders in the subdirectories of the current directory
 
-# %%
+# find all subdirectories in the current directory
+for dir in $(find . -maxdepth 1 -type d)
+do
+    # delete the input and output folders in the subdirectories
+    rm -rf $dir/input $dir/output
+done
 
-#%% Packages
-import pandas as pd
-import numpy as np
-from time import strptime
-import requests
-import pandas_datareader.data as web    
-
-from io import BytesIO
-
-#%%  Download all sheets
-
-url = 'https://www.philadelphiafed.org/-/media/frbp/assets/surveys-and-data/survey-of-professional-forecasters/data-files/files/individual_rconsum.xlsx'
-proxies = {'http': 'http://proxy-t.frb.gov:8080', 'https': 'http://proxy-t.frb.gov:8080' }
-headers = {'User-Agent': 'jake.orchard@frb.gov'}
-
-
-response = requests.get(url, proxies = proxies, headers= headers)
-filedata = BytesIO(response.content)   
-df = pd.read_excel(filedata)
-
-#df = pd.read_excel(url) 
-
-
-
-
-#%% Labels industries
-
-df['INDUSTRY_LABEL'] = 'Financial Service Provider'
-df.loc[df['INDUSTRY']== 2,'INDUSTRY_LABEL'] = 'Non-Financial Service Provider'
-df.loc[df['INDUSTRY']== 3,'INDUSTRY_LABEL'] = "Unknown"
-df.loc[df['INDUSTRY']== np.nan,'INDUSTRY_LABEL'] = "Unknown"
-
-# %%
-
-df.to_stata('../output/spf_rcons.dta')
-
-
-# %%
