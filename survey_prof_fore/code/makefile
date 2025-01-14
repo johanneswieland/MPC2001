@@ -7,7 +7,7 @@ folders := ../input ../output
 input = 
 
 output= ../output/spf_rcons.dta\
-../output/levels_SPF0704.dta \
+../output/levels_SPF0102.dta \
 		 
 
 # Recipes
