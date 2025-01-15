@@ -5,9 +5,7 @@
 
 *** Required data:
 *       Download from FRED or use previous download saved in freddata_for_forecasting.dta 
-*       Rebate data from rebates.xlsx
-*       Auxiliary variables from auxiliary_forecasting_data.xlsx
-*       Michigan survey data from clean_michigan_small.dta
+
 
 ***  Output:  completedata_for_forecasting.dta
 
@@ -118,22 +116,6 @@ clear
 * III. AUXILIARY DATA IMPORT - 
 ********************************************************************************
 
-* Rebates
-
-import delimited "../input/rebates.csv", encoding(ISO-8859-2)  
-gen mdate = m(1959m1) + _n-1
-tsset mdate, m
-
-label var nrebate "nominal rebate"
-
-sort mdate
-tempfile rebate
-save `rebate'
-
-clear
-
-
-
 clear
 
 
@@ -195,7 +177,6 @@ drop rcnd rcsv rcndsv /* will create them later with other similar variables */
 * V. Merge data and create variables for forecasting
 ********************************************************************************
 
-merge 1:1 mdate using `rebate', nogen
 merge 1:1 mdate using `jpsnd', nogen
 
 
