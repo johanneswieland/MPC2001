@@ -66,7 +66,7 @@ Survey Research Center (2001). ‘Surveys of consumers’, University of Michiga
 
 ## External datasets
 
-All datasets that are not downloaded directly by the code are included in the folder `external_data`.
+All datasets that are not downloaded directly by the code are included in the folder `external_data`. There are also .csv versions of all of the below data files.
 
 | Name        | Source | Citation    | License |
 |-------------|-----|---------------|---------------|
