@@ -4,8 +4,7 @@
 folders := ../input ../output
 
 # This generates the list of zip files we should see in the input folder 	
-input=	../input/rebates.csv \
-		../input/JPS_consumption_rebate.xlsx
+input=	../input/JPS_consumption_rebate.xlsx
 
 
 # This generates the list of processed data files	
@@ -21,7 +20,7 @@ $(folders):
 	mkdir $@
 
 
-../input/rebates.csv ../input/JPS_consumption_rebate.xlsx: | ../input
+ ../input/JPS_consumption_rebate.xlsx: | ../input
 	if [ -e ../../external_data/$(@F) ] ; then ln -s ../../external_data/$(@F) $@ ; else exit 1; fi	
 
 
