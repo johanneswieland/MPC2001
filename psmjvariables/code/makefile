@@ -10,10 +10,10 @@ include ../../generic.make
 ../output/psmjexpendituresinterview.parquet ../output/psmjexpendituresmonthly.parquet: psmjexpenditures.py ../input/fmliquarterly.parquet ../input/mtbimonthly.parquet | ../output
 	rm -r ../output
 	mkdir ../output
-	python $<
+	python3 $<
 
 ../output/psmjvariablesinterview.parquet ../output/psmjvariablesmonthly.parquet: psmjmergedata.py ../output/psmjexpendituresinterview.parquet ../output/psmjexpendituresmonthly.parquet
-	python $<
+	python3 $<
 
 # Create sim link to file with downloaded cex data. if statement checks that the file exists
 ../input/fmliquarterly.parquet: ../../createconsumptionvariables/output/fmliquarterly.parquet | ../input

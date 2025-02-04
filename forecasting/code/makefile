@@ -15,12 +15,10 @@ output= ../output/forecasts2001.dta
 
 
 # Recipes
-all: $(folders) $(output) $(input)
+all: ../output/forecasts2001.dta  
 
+include ../../generic.make
 
-# Create folders if they do not already exist
-$(folders):
-	mkdir $@
 
 ../input/clean_michigan_small.dta: | ../input
 	if [ -e ../../michigan_survey/output/$(@F) ] ; then ln -s ../../michigan_survey/output/$(@F) $@ ; else exit 1; fi	

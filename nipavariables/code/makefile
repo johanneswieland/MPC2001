@@ -10,10 +10,10 @@ include ../../generic.make
 ../output/nipaexpendituresinterview.parquet ../output/nipaexpendituresmonthly.parquet: nipaexpenditures.py ../input/fmliquarterly.parquet ../input/mtbimonthly_NIPACAT.parquet | ../output
 	rm -r ../output
 	mkdir ../output
-	python $<
+	python3 $<
 
 ../output/nipavariablesinterview.parquet ../output/nipavariablesmonthly.parquet: nipamergedata.py ../output/nipaexpendituresinterview.parquet ../output/nipaexpendituresmonthly.parquet $(input) | ../output
-	python $<
+	python3 $<
 
 # Create sim link to file with downloaded cex data. if statement checks that the file exists
 ../input/fmliquarterly.parquet: ../../createconsumptionvariables/output/fmliquarterly.parquet | ../input

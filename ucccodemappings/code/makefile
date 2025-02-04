@@ -13,4 +13,4 @@ include ../../generic.make
 # %: will repeat this structure for both output files
 # $< is first dependency (in this case the python file)
 ../output/%.yml: %.py | ../output
-	python $<
+	python3 $<

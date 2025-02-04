@@ -7,7 +7,7 @@ include ../../generic.make
 ../output/testingaggregation.txt: testingaggregation.py ../input/fmliquarterly.parquet ../input/mtbimonthly.parquet ../input/level3to2_map.yml ../input/cexname_conversion.yml | ../output
 	rm -r ../output
 	mkdir ../output
-	python $<
+	python3 $<
 
 ../input/%.yml: ../../ucccodemappings/output/%.yml | ../input
 	ln -s $< $@
