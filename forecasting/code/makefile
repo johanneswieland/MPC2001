@@ -1,35 +1,17 @@
-## Definitions
-
-# Folders we will be looking for in the task directory
-folders := ../input ../output
-
-# This generates the list of zip files we should see in the input folder 	
-input= ../input/clean_michigan_small.dta \
-		../input/auxiliary_forecasting_data.csv\
-		../input/rebates.csv \
-		../input/JPS_consumption_rebate.xlsx
-
-
-# This generates the list of processed data files	
-output= ../output/forecasts2001.dta  
-
-
 # Recipes
-all: ../output/forecasts2001.dta  
+all: ../output/forecasts2001.dta  ../output/fig_forecasts2001.eps
 
 include ../../generic.make
 
 
-../input/clean_michigan_small.dta: | ../input
-	if [ -e ../../michigan_survey/output/$(@F) ] ; then ln -s ../../michigan_survey/output/$(@F) $@ ; else exit 1; fi	
-
-../input/auxiliary_forecasting_data.csv	../input/rebates.csv ../input/JPS_consumption_rebate.xlsx: | ../input
-	if [ -e ../../external_data/$(@F) ] ; then ln -s ../../external_data/$(@F) $@ ; else exit 1; fi	
-
-
 # run model file and move outputs
-$(output): build_forecast_data.do forecast2001.do $(input)
+../output/forecasts2001.dta ../output/fig_forecasts2001.eps  : build_forecast_data.do forecast2001.do ../input/auxiliary_forecasting_data.csv ../input/rebates.csv  ../input/JPS_consumption_rebate.xlsx | ../output
 	stata-se -b run build_forecast_data.do
 	stata-se -b run forecast2001.do
 	
 
+../input/%.csv: ../../external_data/output/%.csv | ../input
+	ln -s $< $@
+
+../input/%.xlsx: ../../external_data/output/%.xlsx | ../input
+	ln -s $< $@

@@ -10,14 +10,14 @@ include ../../generic.make
 	python $<
 
 # Create sim link to file RBT file
-../input/TAX.parquet: -e ../../appendCEXfiles/output/TAX.parquet | ../input
+../input/TAX.parquet: ../../appendCEXfiles/output/TAX.parquet | ../input
 	ln -s $< $@
 
 # Create sim link to file FMLI file
 ../input/fmliquarterly.parquet: ../../createconsumptionvariables/output/fmliquarterly.parquet | ../input
 	ln -s $< $@ 
 
-../input/fmliquarterly.parquet: ../../createconsumptionvariables/output/mtbimonthly.parquet  | ../input
+../input/mtbimonthly.parquet: ../../createconsumptionvariables/output/mtbimonthly.parquet  | ../input
 	ln -s $< $@ 
 
 
