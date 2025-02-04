@@ -1,22 +1,3 @@
-
-
-# This generates the list of zip files we should see in the input folder 	
-input= \
-		../input/fmli.parquet \
-		../input/mtbi.parquet \
-		../input/ucc_category_map.yml \
-		../input/psmjcategories_map.yml \
-		../input/cexname_conversion.yml \
-		../input/level3to2_map.yml \
-		../input/nipacategories_map.yml \
-		../input/ucc_nipa_map.yml \
-
-downloads = ../input/ce-pumd-interview-diary-dictionary.xlsx
-
-# This generates the list of processed data files	
-output=../output/fmliquarterly.parquet ../output/mtbi_wnewUCC.parquet  ../output/mtbimonthly.parquet ../output/mtbimonthly_NIPACAT.parquet ../output/agglabelsnipa.dta ../output/agglabelspsmj.dta ../output/agglabels_levelnames_nipa.dta 
-
-
 # Recipes
 all: ../output/fmliquarterly.parquet \
 	 ../output/mtbi_wnewUCC.parquet  \
@@ -51,7 +32,7 @@ include ../../generic.make
 	ln -s $< $@
 
 # Create sim link to file with downloaded cex data. if statement checks that the file exists
-../input/fmli.parquet ../input/mtbi.parquet: ../../appendCEXfiles/output/fmli.parquet ../../appendCEXfiles/output/mtbi.parquet | ../input
+../input/%.parquet: ../../appendCEXfiles/output/%.parquet | ../input
 	ln -s $< $@
 
 # Create sim link to file with ucc mappings to expenditure categories
