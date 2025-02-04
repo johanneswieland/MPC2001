@@ -7,7 +7,7 @@ all: ../output/fmli.parquet \
 include ../../generic.make
 
 # this is the recipe that creates the zip file with cex data  --downloadopt ../input/cexdownloadoptions.yml
-../output/fmli.parquet ../output/mtbi.parquet ../output/TAX.parquet: appendCEXfiles.py ../input/cexdownload.zip
+../output/fmli.parquet ../output/mtbi.parquet ../output/TAX.parquet: appendCEXfiles.py ../input/cexdownload.zip | ../output
 	python appendCEXfiles.py
 
 ../input/cexdownload.zip: ../../downloaddata/output/cexdownload.zip | ../input

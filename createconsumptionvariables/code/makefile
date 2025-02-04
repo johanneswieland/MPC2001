@@ -10,21 +10,21 @@ all: ../output/fmliquarterly.parquet \
 include ../../generic.make
 
 # this is the recipe that creates the zip file with cex data  --downloadopt ../input/cexdownloadoptions.yml
- ../output/fmliquarterly.parquet : sumFMLIquarterlyconsumption.py ../input/fmli.parquet
+ ../output/fmliquarterly.parquet : sumFMLIquarterlyconsumption.py ../input/fmli.parquet | ../output
 	python sumFMLIquarterlyconsumption.py
 
 # Creates new UCC codes
- ../output/mtbi_wnewUCC.parquet : create_new_UCC.py ../input/mtbi.parquet
+ ../output/mtbi_wnewUCC.parquet : create_new_UCC.py ../input/mtbi.parquet | ../output
 	python create_new_UCC.py
 
 
 # Create MTBI monthly files
- ../output/mtbimonthly.parquet ../output/mtbimonthly_NIPACAT.parquet :  aggregateMTBIucc.py  ../input/mtbi.parquet ../input/ucc_category_map.yml ../output/mtbi_wnewUCC.parquet ../input/nipacategories_map.yml ../input/ucc_nipa_map.yml $(downloads)
+ ../output/mtbimonthly.parquet ../output/mtbimonthly_NIPACAT.parquet :  aggregateMTBIucc.py  ../input/mtbi.parquet ../input/ucc_category_map.yml ../output/mtbi_wnewUCC.parquet ../input/nipacategories_map.yml ../input/ucc_nipa_map.yml | ../output
 	python aggregateMTBIucc.py
 
 
 # Create aggregation labels
- ../output/agglabelsnipa.dta ../output/agglabelspsmj.dta ../output/agglabels_levelnames_nipa.dta  :  aggregation_labels.py   ../input/ucc_category_map.yml  ../input/nipacategories_map.yml ../input/ucc_nipa_map.yml 
+ ../output/agglabelsnipa.dta ../output/agglabelspsmj.dta ../output/agglabels_levelnames_nipa.dta  :  aggregation_labels.py   ../input/ucc_category_map.yml  ../input/nipacategories_map.yml ../input/ucc_nipa_map.yml | ../output
 	python aggregation_labels.py
 
 

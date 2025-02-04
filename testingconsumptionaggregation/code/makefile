@@ -4,7 +4,7 @@ all: ../output/testingaggregation.txt
 include ../../generic.make
 
 # this is the recipe that creates the zip file with cex data  --downloadopt ../input/cexdownloadoptions.yml
-../output/%.txt: %.py ../input/fmliquarterly.parquet ../input/mtbimonthly.parquet ../input/level3to2_map.yml ../input/cexname_conversion.yml | ../output
+../output/testingaggregation.txt: testingaggregation.py ../input/fmliquarterly.parquet ../input/mtbimonthly.parquet ../input/level3to2_map.yml ../input/cexname_conversion.yml | ../output
 	rm -r ../output
 	mkdir ../output
 	python $<
