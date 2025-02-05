@@ -78,11 +78,11 @@ df['DATE'] = pd.to_datetime(dict(year = df['RBT01YR'],
 df['RBT01 INDICATOR'] = True
 
 
-sum_vars = {'RBT01AMT'}
-max_vars = {'RBT01 INDICATOR'}
+sum_vars = ['RBT01AMT']
+max_vars = ['RBT01 INDICATOR']
 
 df = aggregate_df(df, 
-                        agg_by={'NEWID', 'DATE'}, 
+                        agg_by=['NEWID', 'DATE'],
                         sum=sum_vars, 
                         max=max_vars)
 
@@ -103,11 +103,11 @@ df = df.reset_index().set_index(['CUID', 'DATE'])
 # Collapse at household - DATE level
 # ------------------------------------------------------------------------
 #%%
-min_vars = {'INTDATE','INTNUM'}
+min_vars = ['INTDATE','INTNUM']
 
 
 df = aggregate_df(df.reset_index(), 
-                        agg_by={ 'CUID', 'DATE'}, 
+                        agg_by=['CUID', 'DATE'], 
                         sum=sum_vars, 
                         max=max_vars,
                         min = min_vars)
