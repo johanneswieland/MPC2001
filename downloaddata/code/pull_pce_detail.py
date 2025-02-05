@@ -87,6 +87,7 @@ dfagg = dfagg.rename(columns={'TimePeriod':'DATE'})
 dfagg = dfagg.set_index('DATE')
 dfagg.to_parquet('../output/pce_apparel_health.parquet', index=True)
 dfagg.to_csv('../output/pce_apparel_health.csv')
+dfagg.to_csv('../report/pce_apparel_health.csv')
 # %%
 
 

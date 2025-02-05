@@ -1,32 +1,18 @@
-## Definitions
-
-# Folders we will be looking for in the task directory
-folders := ../input ../output
-
-# This generates the list of zip files we should see in the input folder 	
-input=	../input/JPS_consumption_rebate.xlsx
-
-
-# This generates the list of processed data files	
-output= ../output/forecasts2001.dta  
-
-
 # Recipes
-all: $(folders) $(output) $(input)
+all: ../output/forecasts2001.dta  ../output/fig_forecasts2001.eps ../output/freddata_for_forecasting.dta  ../output/cndur_jpscat.dta ../report/completedata_for_forecasting.csv
 
-
-# Create folders if they do not already exist
-$(folders):
-	mkdir $@
-
-
- ../input/JPS_consumption_rebate.xlsx: | ../input
-	if [ -e ../../external_data/$(@F) ] ; then ln -s ../../external_data/$(@F) $@ ; else exit 1; fi	
+include ../../generic.make
 
 
 # run model file and move outputs
-$(output): build_forecast_data.do forecast2001.do $(input)
+../output/freddata_for_forecasting.dta  ../output/cndur_jpscat.dta ../report/completedata_for_forecasting.csv: build_forecast_data.do  ../input/JPS_consumption_rebate.xlsx | ../output ../report
 	stata-se -b run build_forecast_data.do
-	stata-se -b run forecast2001.do
-	
 
+../output/forecasts2001.dta ../output/fig_forecasts2001.eps: forecast2001.do  ../output/freddata_for_forecasting.dta
+	stata-se -b run forecast2001.do
+
+../input/%.csv: ../../external_data/output/%.csv | ../input
+	ln -s $< $@
+
+../input/%.xlsx: ../../external_data/output/%.xlsx | ../input
+	ln -s $< $@

@@ -1,40 +1,21 @@
-## Definitions
-
-# Folders we will be looking for in the task directory
-folders := ../input ../output
-
-# Inputs
-input = ../input/cexdownloadoptions.yml
-
-# This generates the list of zip files we expect 	
-output=../output/cexdownload.zip  \
+## Recipes
+all: ../output/cexdownload.zip  \
 		../output/pceexpenditure.parquet \
 		../output/pce_apparel_health.csv
 
+include ../../generic.make
 
-## Recipes
-all: $(folders) $(input)  $(output)
-# all: $(folders) $(output)
-
-# Create folders if they do not already exist
-$(folders):
-	mkdir $@
-
-# Create sim link to options file. if statement checks that the file exists
-../input/cexdownloadoptions.yml: | ../input
-	if [ -e ../../globaloptions/hand/$(@F) ] ; then ln -s ../../globaloptions/hand/$(@F) $@ ; else exit 1; fi	
 
 # this is the recipe that creates the zip file with cex data
-../output/cexdownload.zip: downloadfromBLS.py ../input/cexdownloadoptions.yml
-	python downloadfromBLS.py --downloadopt ../input/cexdownloadoptions.yml
+../output/cexdownload.zip: downloadfromBLS.py ../input/cexdownloadoptions.yml | ../output
+	python3 downloadfromBLS.py --downloadopt ../input/cexdownloadoptions.yml
 
-# this is the recipe that creates the zip file with cex data  --downloadopt ../input/cexdownloadoptions.yml
-../output/pceexpenditure.parquet: pcefromBEA.py
-	python pcefromBEA.py
+# this is the recipe that creates PCE expenditure files
+../output/pceexpenditure.parquet ../report/pceexpenditure.parquet: pcefromBEA.py | ../output ../report
+	python3 pcefromBEA.py
 
-../output/pce_apparel_health.csv: pull_pce_detail.py
-	python pull_pce_detail.py
+../output/pce_apparel_health.csv ../report/pce_apparel_health.csv: pull_pce_detail.py | ../output ../report
+	python3 pull_pce_detail.py
 
-
-# This is the link to ICPSR but it requires log-in and agreement. R has a package called icpsrdata that could automate this process
-# http://www.icpsr.umich.edu/cgi-bin/bob/zipcart2?path=ICPSR&study=8423&bundle=all&ds=&dups=yes
+../input/cexdownloadoptions.yml: ../../globaloptions/hand/cexdownloadoptions.yml | ../input
+	ln -s $< $@

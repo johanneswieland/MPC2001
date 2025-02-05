@@ -15,7 +15,10 @@ def aggregate_with_dict(df,filename):
 
     # loop over categories and sum entries
     for category, subcategories in dictionary_map.items():
-        df[category] = df[subcategories].sum(axis=1)
+        # if subcategories is a set, then convert to list
+        if isinstance(subcategories, set):
+            subcategories = list(subcategories)
+        df[category] = df.loc[:, subcategories].sum(axis=1)
 
     return df
 
@@ -39,7 +42,8 @@ def aggregate_df(df, agg_by={}, **kargs):
     aggregation_dict = {var:operation for operation, variables in kargs.items() for var in variables} 
         
     # new dataframe: combines all series in agg_by and in kargs
-    df = df[set(agg_by) | aggregation_dict.keys()]
+    agg_by_list = list(set(agg_by) | aggregation_dict.keys())
+    df = df[agg_by_list]
     
     # aggregate
     df = df.groupby(list(agg_by)).agg(aggregation_dict)

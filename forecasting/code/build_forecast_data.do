@@ -33,7 +33,7 @@ set fredkey INSERT FREDKEY HERE
 
 import fred DSPI UNRATE PCE PCEND PCES PCEDG DNRGRC1M027SBEA PMSAVE PSAVERT PCEPI  ///
   DNDGRG3M086SBEA DSERRG3M086SBEA DDURRG3M086SBEA PCEPILFE DNRGRG3M086SBEA DFXARG3M086SBEA ///
-  UMCSENT FEDFUNDS WTISPLC GS3M GS10 USREC
+  UMCSENT FEDFUNDS WTISPLC GS3M GS10 USREC 
 gen mdate = mofd(daten)
 tsset mdate, m
 order mdate
@@ -116,10 +116,6 @@ clear
 * III. AUXILIARY DATA IMPORT - 
 ********************************************************************************
 
-clear
-
-
-
 *JPS ND Monthly series
 import excel "../input/JPS_consumption_rebate.xlsx", sheet("monthly") firstrow
 gen mdate = m(1959m1) + _n-1
@@ -201,7 +197,7 @@ foreach var in ndisp_income ncons ncnd ncsv ncndsv ncdur ncnrg {
 
 * take logs
 foreach var in ndisp_income ncons ncnd ncsv ncndsv ncdur ncnrg pcons pcnd pcsv pcndsv pcdur ///
-  pcnrg npoil   ncndur_jpscat{
+  pcnrg npoil ncndur_jpscat{
   	gen l`var' = ln(`var')
 	label var l`var' "log of `var'"
   }
@@ -234,7 +230,7 @@ foreach var in cndur_jpscat{
 
 * create other real variables using pce deflator
 
-foreach var in disp_income poil{
+foreach var in disp_income poil {
 	gen lr`var' = ln`var' - lpcons
 	label var lr`var' "log real `var'"
 }
@@ -243,6 +239,8 @@ foreach var in disp_income poil{
 gen d911 = mdate == ym(2001,9)
 
 save ../output/completedata_for_forecasting.dta, replace
+
+export delimited ../report/completedata_for_forecasting.csv, replace
 
 keep mdate ncndur_jpscat rcndur_jpscat
 save ../output/cndur_jpscat.dta, replace

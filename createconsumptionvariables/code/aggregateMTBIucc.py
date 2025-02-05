@@ -112,7 +112,7 @@ for file in filetype:
                 # if already assigned, create duplicates of uccs and assign new code
                 dfslicecopy = df.loc[pd.IndexSlice[:,:,ucc],:].copy()
                 dfslicecopy['CAT'] = catcode
-                df = df.append(dfslicecopy)
+                df = pd.concat([df, dfslicecopy])
 
 
     # for category in uccmapping:

@@ -3,9 +3,8 @@
 ../../psmjregressions/output/Table_2001_NDcompare.tex
 ../../psmjregressions/output/Table_2001_NDcomparerbtonly.tex
 ../../psmjregressions/output/bea_all.tex
-../../psmjregressions/output/Table_2001_NDcompare_wlag
-../../psmjregressions/output/Table_2001_NDcompare_wlagrbtonly
-../../psmjregressions/output/bea_all_longtable
+../../psmjregressions/output/Table_2001_NDcompare_wlag.tex
+../../psmjregressions/output/Table_2001_NDcompare_wlagrbtonly.tex
 ../../narrative/output/fig_cy_pres.eps
 ../../narrative/output/fig_cy_pres01.eps
 ../../narrative/output/fig_jpscy_pres01.eps
