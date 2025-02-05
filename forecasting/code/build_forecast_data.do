@@ -118,41 +118,6 @@ clear
 * III. AUXILIARY DATA IMPORT - 
 ********************************************************************************
 
-* Rebates
-
-import delimited "../input/rebates.csv", encoding(ISO-8859-2)  
-gen mdate = m(1959m1) + _n-1
-tsset mdate, m
-
-label var nrebate "nominal rebate"
-
-sort mdate
-tempfile rebate
-save `rebate'
-
-clear
-
-* S&P 500, NBER recession dates, Gilchrist-Zakrajsek ebp, Ramey-Vine variables
-import delimited "../input/auxiliary_forecasting_data.csv" 
-gen mdate = m(1959m1) + _n-1
-tsset mdate, m
-
-gen npgasrv = npgas*rvfactor
-
-label var nstockprice "S&P 500, nominal, from Shiller"
-label var npgas "PCE deflator, gasoline and other motor fuel"
-label var rvfactor "Ramey-Vine multiplicative factor for rationing costs"
-label var npgasrv "Gas prices augmented with rationing costs"
-label var umcsent_cargas "UM Consumer sentiment, bad time to buy car b/c gas price or rationing"
-label var gz_spr "Gilchrist-Zakrajsek spread"
-label var ebp "Gilchrist-Zakrajsek version of ebp"
-
-sort mdate
-tempfile auxiliary
-save `auxiliary'
-
-clear
-
 *JPS ND Monthly series
 import excel "../input/JPS_consumption_rebate.xlsx", sheet("monthly") firstrow
 gen mdate = m(1959m1) + _n-1
@@ -210,8 +175,6 @@ drop rcnd rcsv rcndsv /* will create them later with other similar variables */
 * V. Merge data and create variables for forecasting
 ********************************************************************************
 
-merge 1:1 mdate using `rebate', nogen
-merge 1:1 mdate using `auxiliary', nogen
 merge 1:1 mdate using `jpsnd', nogen
 
 
