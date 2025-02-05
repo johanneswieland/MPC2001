@@ -12,7 +12,7 @@ include ../../generic.make
 	mkdir ../output
 	python3 $<
 
-../output/nipavariablesinterview.parquet ../output/nipavariablesmonthly.parquet: nipamergedata.py ../output/nipaexpendituresinterview.parquet ../output/nipaexpendituresmonthly.parquet $(input) | ../output
+../output/nipavariablesinterview.parquet ../output/nipavariablesmonthly.parquet: nipamergedata.py ../output/nipaexpendituresinterview.parquet ../output/nipaexpendituresmonthly.parquet ../input/interviewvariables.parquet ../input/cohortvariables.parquet ../input/rebate2001cuid.parquet ../input/rebate2001interview.parquet ../input/rebate2001monthly.parquet | ../output
 	python3 $<
 
 # Create sim link to file with downloaded cex data. if statement checks that the file exists

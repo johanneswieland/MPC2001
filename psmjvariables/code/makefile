@@ -12,7 +12,7 @@ include ../../generic.make
 	mkdir ../output
 	python3 $<
 
-../output/psmjvariablesinterview.parquet ../output/psmjvariablesmonthly.parquet: psmjmergedata.py ../output/psmjexpendituresinterview.parquet ../output/psmjexpendituresmonthly.parquet
+../output/psmjvariablesinterview.parquet ../output/psmjvariablesmonthly.parquet: psmjmergedata.py ../output/psmjexpendituresinterview.parquet ../output/psmjexpendituresmonthly.parquet ../input/interviewvariables.parquet ../input/cohortvariables.parquet ../input/rebate2001cuid.parquet ../input/rebate2001interview.parquet ../input/rebate2001monthly.parquet ../input/nipaexpendituresinterview.parquet ../input/nipaexpendituresmonthly.parquet
 	python3 $<
 
 # Create sim link to file with downloaded cex data. if statement checks that the file exists
