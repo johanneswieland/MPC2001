@@ -46,7 +46,7 @@ This project is divided into a series of subfolders that execute all of the task
 
 The `makefile` in the main folder shows the order of execution of the subfolders. The graph below shows the relationship between tasks.
 
-![image](symlink_graph/report/task_flow.png)
+![Task Flow](symlink_graph/report/task_flow.png)
 
 # Creating individual outputs
 
