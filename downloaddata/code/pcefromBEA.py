@@ -81,6 +81,6 @@ for TableName, TableTitle, Yearstart in zip(TableNames, TableTitles, Yearstarts)
     # ------------------------------------------------------------------------
 
     df.to_parquet('../output/' + TableTitle + '.parquet')
-    df.to_parquet('../report/' + TableTitle + '.parquet')
+    df.to_csv('../report/' + TableTitle + '.parquet')
 
 # %%

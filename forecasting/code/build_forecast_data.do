@@ -109,7 +109,6 @@ label var tbond10y "10-year treasury bond yield"
 label var vix "CBOE VIX Index"
 
 save ../output/freddata_for_forecasting.dta, replace
-save ../report/freddata_for_forecasting.dta, replace
 
 clear
 
@@ -241,6 +240,8 @@ foreach var in disp_income poil stockprice pgas pgasrv{
 gen d911 = mdate == ym(2001,9)
 
 save ../output/completedata_for_forecasting.dta, replace
+
+export delimited ../report/completedata_for_forecasting.csv, replace
 
 keep mdate ncndur_jpscat rcndur_jpscat
 save ../output/cndur_jpscat.dta, replace

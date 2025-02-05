@@ -28,6 +28,7 @@ df.loc[df['INDUSTRY']== np.nan,'INDUSTRY_LABEL'] = "Unknown"
 # %%
 
 df.to_stata('../output/spf_rcons.dta')
+df.to_csv('../report/spf_rcons.csv')
 
 
 # %%

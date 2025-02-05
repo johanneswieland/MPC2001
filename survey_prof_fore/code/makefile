@@ -4,7 +4,7 @@ all: ../output/spf_rcons.dta\
 
 include ../../generic.make
 
-../output/spf_rcons.dta: pull_SPF.py
+../output/spf_rcons.dta ../report/spf_rcons.csv: pull_SPF.py | ../output ../report
 	python3 pull_SPF.py
 
 # this is the recipe 
