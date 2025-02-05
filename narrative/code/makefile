@@ -20,5 +20,5 @@ include ../../generic.make
 ../input/pce_apparel_health.csv: ../../downloaddata/output/pce_apparel_health.csv | ../input
 		ln -s $< $@
 
-../input/cndur_jpscat.dta:	../../forecasting/output/cndur_jpscat.dta  | ../input
+../input/cndur_jpscat.dta: ../../forecasting/output/cndur_jpscat.dta  | ../input
 		ln -s $< $@

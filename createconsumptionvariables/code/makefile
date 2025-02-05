@@ -36,5 +36,5 @@ include ../../generic.make
 	ln -s $< $@
 
 # Create sim link to file with ucc mappings to expenditure categories
-../input/%.yml: ../ucccodemappings/output/%.yml | ../input
+../input/%.yml: ../../ucccodemappings/output/%.yml | ../input
 	ln -s $< $@	
