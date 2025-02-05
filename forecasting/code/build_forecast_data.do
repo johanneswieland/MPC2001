@@ -109,6 +109,7 @@ label var tbond10y "10-year treasury bond yield"
 label var vix "CBOE VIX Index"
 
 save ../output/freddata_for_forecasting.dta, replace
+save ../report/freddata_for_forecasting.dta, replace
 
 clear
 
