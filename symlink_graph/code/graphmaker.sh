@@ -1,7 +1,7 @@
 #!/bin/bash
 #Script to generate graph of tasks
 
-echo -e 'digraph G {' > ../output/graph.txt
+echo 'digraph G {' > ../output/graph.txt
 
 find ../../*/code -maxdepth 1 -name "makefile" | xargs grep -o 'input.*:.*output' |
 sed 's/\.\.\/\.\.\///g' | #Drop leading relative path ../../ from start of line
