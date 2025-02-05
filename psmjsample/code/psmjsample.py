@@ -30,7 +30,7 @@ df['Rebate_module_filter01'] = df['EVER RBTINTVIEW_2001']  #df['RBTINTVIEW'].gro
 
 # 3. Omits the bottom 1 percent of nondurable consumption expenditures in levels (after adjusting for family size and allowing for a time trend)
 # to use the date as a time trend in the regression it has to be in the columns
-df['INT_DATE_COPY'] = df.index.get_level_values(1)
+df['INT_DATE_COPY'] = df.index.get_level_values('INTDATE')
 
 # this fits the regression as I understand it from Parker-Johnson-Souleles (2006, p.1608)
 fit01 = ols('NDEXP ~ C(FAM_SIZE) + INT_DATE_COPY ', data=df[df['Wave_filter01']==1]).fit() 
@@ -100,14 +100,32 @@ for year in {'01'}:
 
 
 
-# checking sample size is correct (with the larger sample, there are 3 missing insample and 2 missing rbt)
-# print('Checking Sample Size is Unchanged.\n Expect 17229 insample, 28843 insamplelvl, and 10343 insample rbt')
+
 print('Insample = ' + str(df['INSAMPLE01'].sum()))
 print('Insamplelvl = ' + str(df['INSAMPLELVL01'].sum()))
 print('Insample rbt = ' + str(df['INSAMPLE RBT01'].sum()))
 assert df['INSAMPLE01'].sum() == 12363
-# assert df['INSAMPLELVL'].sum() == 28843
 assert df['INSAMPLE RBT01'].sum() == 6220
+
+dftest = pd.read_parquet('../output/psmjsampleinterviewtest.parquet')
+
+dftest.index = dftest.index.reorder_levels(['CUID','NEWID','INTDATE'])
+
+index = df.loc[df['INSAMPLE01'],:].index
+indextest = dftest.loc[dftest['INSAMPLE01'],:].index
+
+for i in indextest:
+   if i not in index:
+      # print(df.loc[i, [colname for colname in df if colname.endswith('_filter') or colname.endswith('_filter01')]])
+      print(df.loc[i, ['INSAMPLE01']])
+      print(dftest.loc[i, ['INSAMPLE01']])
+
+for i in index:
+   if i not in indextest:
+      print(df.loc[i, ['INSAMPLE01']])
+      print(dftest.loc[i, ['INSAMPLE01']])    
+
+# stop 
 
 # Drop all the individual filters
 df.drop([colname for colname in df if colname.endswith('_filter')], axis=1, inplace=True)
