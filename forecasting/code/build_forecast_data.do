@@ -35,7 +35,7 @@ set fredkey b2d9da12107485ec086c5691d41d626c
 
 import fred DSPI UNRATE PCE PCEND PCES PCEDG DNRGRC1M027SBEA PMSAVE PSAVERT PCEPI  ///
   DNDGRG3M086SBEA DSERRG3M086SBEA DDURRG3M086SBEA PCEPILFE DNRGRG3M086SBEA DFXARG3M086SBEA ///
-  UMCSENT FEDFUNDS WTISPLC GS3M GS10 
+  UMCSENT FEDFUNDS WTISPLC GS3M GS10 USREC 
 gen mdate = mofd(daten)
 tsset mdate, m
 order mdate
@@ -64,6 +64,7 @@ rename FEDFUNDS ffr
 rename WTISPLC npoil
 rename GS3M tbill3m
 rename GS10 tbond10y
+rename USREC recession
 
 *Merge in VIX index, which starts as a daily index 
 preserve 
