@@ -19,7 +19,7 @@ include ../../generic.make
 
 
 # Create MTBI monthly files
- ../output/mtbimonthly.parquet ../output/mtbimonthly_NIPACAT.parquet :  aggregateMTBIucc.py  ../input/mtbi.parquet ../input/ucc_category_map.yml ../output/mtbi_wnewUCC.parquet ../input/nipacategories_map.yml ../input/ucc_nipa_map.yml ../input/ce-pumd-interview-diary-dictionary.xlsx | ../output
+ ../output/mtbimonthly.parquet ../output/mtbimonthly_NIPACAT.parquet :  aggregateMTBIucc.py  ../input/mtbi.parquet ../input/ucc_category_map.yml ../output/mtbi_wnewUCC.parquet ../input/level3to2_map.yml ../input/cexname_conversion.yml ../input/nipacategories_map.yml ../input/ucc_nipa_map.yml ../input/psmjcategories_map.yml ../input/ce-pumd-interview-diary-dictionary.xlsx | ../output
 	python3 aggregateMTBIucc.py
 
 

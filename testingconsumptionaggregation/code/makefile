@@ -12,5 +12,5 @@ include ../../generic.make
 ../input/%.yml: ../../ucccodemappings/output/%.yml | ../input
 	ln -s $< $@
 
-../input/%.parquet: ../../createconsumptionvariables/output/%.yml | ../input
+../input/%.parquet: ../../createconsumptionvariables/output/%.parquet | ../input
 	ln -s $< $@
