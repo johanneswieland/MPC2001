@@ -75,7 +75,7 @@ For data that may be revised in the future, such as aggregate data downloaded fr
 
 # Data Citation
 
-This project code downloads data from the Bureau of Labor Statistics (BLS), the Federal Reserve Bank of Philadelphia (the SPF surveys),  and the Bureau of Economic Analysis (BEA). The user of these replication files will be under the license requirments of these files when they run the replication code.  
+This project code downloads data from the Bureau of Labor Statistics (BLS), the Federal Reserve Bank of Philadelphia (the SPF surveys), and the Bureau of Economic Analysis (BEA). The user of these replication files will be under the license requirments of these files when they run the replication code.  
 
 
 ## Downloaded Data Citation 
@@ -88,8 +88,6 @@ Labor.
 
 Federal Reserve Bank of Philadelphia (2001). ‘Second quarter 2001 survey of professional
 forecasters’, Survey of Professional Forecasters.
-
-Survey Research Center (2001). ‘Surveys of consumers’, University of Michigan.
 
 ## External datasets
 
