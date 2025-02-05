@@ -36,7 +36,7 @@ fmli['AGE2'] = fmli['AGE2'].replace(".","").apply(pd.to_numeric)
 fmli['AGE'] = fmli['AGE_REF']  
 
 # for married use average age
-fmli.loc[fmli['MARITAL1']==1, 'AGE']  = (fmli['AGE_REF'] + fmli['AGE2'] )/2
+fmli.loc[fmli['MARITAL1']==1, 'AGE']  = (fmli.loc[fmli['MARITAL1']==1, 'AGE_REF'] + fmli.loc[fmli['MARITAL1']==1,'AGE2'] )/2
 
 
 
