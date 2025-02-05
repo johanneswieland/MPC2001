@@ -231,7 +231,7 @@ foreach var in cndur_jpscat{
 
 * create other real variables using pce deflator
 
-foreach var in disp_income poil stockprice pgas pgasrv{
+foreach var in disp_income poil {
 	gen lr`var' = ln`var' - lpcons
 	label var lr`var' "log real `var'"
 }
