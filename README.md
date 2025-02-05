@@ -2,7 +2,7 @@
 
 Replication code for "Using Macro Counterfactuals to Assess Plausibility: An Illustration using the 2001 Rebate MPCs" by Jacob Orchard, Valerie Ramey, and Johannes Wieland
 
-Tested on MAC and Linux using STATA version 16.1 and Python 3.11.
+Tested on MAC and Linux using STATA version 18.5 and Python 3.13.
 
 **The project is set up to work in a MAC or LINUX enivironment (UNIX more generally).** We provide instructions for Windows in the Github repository for the paper [Micro MPCs and Macro Counterfactuals: The Case of the 2008 Rebates](https://github.com/JakeOrchard/MPC2008-Public).
 
