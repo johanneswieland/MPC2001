@@ -107,25 +107,6 @@ print('Insample rbt = ' + str(df['INSAMPLE RBT01'].sum()))
 assert df['INSAMPLE01'].sum() == 12363
 assert df['INSAMPLE RBT01'].sum() == 6220
 
-dftest = pd.read_parquet('../output/psmjsampleinterviewtest.parquet')
-
-dftest.index = dftest.index.reorder_levels(['CUID','NEWID','INTDATE'])
-
-index = df.loc[df['INSAMPLE01'],:].index
-indextest = dftest.loc[dftest['INSAMPLE01'],:].index
-
-for i in indextest:
-   if i not in index:
-      # print(df.loc[i, [colname for colname in df if colname.endswith('_filter') or colname.endswith('_filter01')]])
-      print(df.loc[i, ['INSAMPLE01']])
-      print(dftest.loc[i, ['INSAMPLE01']])
-
-for i in index:
-   if i not in indextest:
-      print(df.loc[i, ['INSAMPLE01']])
-      print(dftest.loc[i, ['INSAMPLE01']])    
-
-# stop 
 
 # Drop all the individual filters
 df.drop([colname for colname in df if colname.endswith('_filter')], axis=1, inplace=True)
