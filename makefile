@@ -18,6 +18,7 @@ all:
 	. venv/bin/activate && make -C forecasting/code
 	. venv/bin/activate && make -C narrative/code
 	. venv/bin/activate && make -C model/code
+	. venv/bin/activate && make -C symlink_graph/code
 	. venv/bin/activate && make -C _finaltablesandfigures/code
 
 # virtual environment
