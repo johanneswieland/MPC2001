@@ -198,7 +198,7 @@ foreach var in ndisp_income ncons ncnd ncsv ncndsv ncdur ncnrg {
 
 * take logs
 foreach var in ndisp_income ncons ncnd ncsv ncndsv ncdur ncnrg pcons pcnd pcsv pcndsv pcdur ///
-  pcnrg npoil nstockprice npgas npgasrv  ncndur_jpscat{
+  pcnrg npoil ncndur_jpscat{
   	gen l`var' = ln(`var')
 	label var l`var' "log of `var'"
   }
