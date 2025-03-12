@@ -52,6 +52,8 @@ STATA packages:
 
 `ssc install ivreghdfe`
 
+For ivreghdfe, it may be useful to install the latest version from github to avoid a ``last estimates not found'' error (see this help article [here](https://github.com/sergiocorreia/ivreghdfe/issues/54)). We are grateful to the data editor for pointint out this issue.
+
 # Order of Tasks to Create Final Output
 
 This project is divided into a series of subfolders that execute all of the tasks leading to final output beginning with downloaddata and ending with _finaltablesandfigures. Each subfolder contains both a code directory and, once-executed,  input and output directories. The `makefile` in the code folder documents how the inputs are converted in the outputs for the task. The input directory will have symbolic links to output from previous tasks, while the output directroy will include all of the output used by subsequent tasks. The final output for the paper is mostly created in the forecasting, psmjregressions, model, and narrative subfolders.
@@ -143,7 +145,7 @@ All datasets that are not downloaded directly by the code are included in the fo
 Bureau of Economic Analysis (2000-2002). ‘National income and product accounts’, US
 Department of Commerce
 
-Bureau of Labor Statistics (2024). ‘Consumer expenditure survey’, US Department of
+Bureau of Labor Statistics (2000-2002). ‘Consumer expenditure survey’, US Department of
 Labor.
 
 Orchard, Jacob, Valerie A. Ramey, and Johannes F. Wieland. Using Macro Counterfactuals to Assess Plausibility: An Illustration using the 2001 Rebate MPCs. Economic Journal, Forthcoming.
