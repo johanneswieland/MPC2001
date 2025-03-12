@@ -5,11 +5,13 @@
 ../../psmjregressions/output/bea_all.tex
 ../../psmjregressions/output/Table_2001_NDcompare_wlag.tex
 ../../psmjregressions/output/Table_2001_NDcompare_wlagrbtonly.tex
+../../psmjregressions/output/coefsall_prettytable.xlsx
 ../../narrative/output/fig_cy_pres.eps
 ../../narrative/output/fig_cy_pres01.eps
 ../../narrative/output/fig_jpscy_pres01.eps
 ../../narrative/output/fig_rebate_ndisp01.eps
 ../../model/output/Real_JPSNondurablesfc_micro_nondurablesonly2001.eps
 ../../model/output/Real_JPSNondurablesfc_GE_nondurablesonly2001_nolegend.eps
+../../model/output/Real_JPSNondurablesfc_GE_nondurablesonly2001_addmpc.eps
 ../../survey_prof_fore/output/SPF_dist_0102_wactual.pdf
 ../../forecasting/output/fig_forecasts2001_jpsnondur.eps
