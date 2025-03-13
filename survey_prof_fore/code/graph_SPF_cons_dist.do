@@ -75,7 +75,7 @@ replace qdate = `spfdate' + 3 if forecast == 5
 replace qdate = `spfdate' + 4 if forecast == 6
 
 if "`year'" == "2001"{
-	drop if forecast == 6
+	*drop if forecast == 6
 }
 
 merge 1:1 qdate using `rpce', nogen keep(match)
@@ -88,7 +88,7 @@ format qdate %tq
 
 	}
 	else{
-	label define frombase 1 "2001 Q1" 2 "2001 Q2" 3 "2001 Q3" 4 "2001 Q4" 5 "2002 Q1"
+	label define frombase 1 "2001 Q1" 2 "2001 Q2" 3 "2001 Q3" 4 "2001 Q4" 5 "2002 Q1" 6 "2002 Q2"
 	local end = "0102"
 	local rebatestart = 3
 
@@ -116,7 +116,7 @@ tw (scatter rpcmin forecast, c(l l) clp(l) clw(medthick) xline(`rebatestart', lp
     (scatter rpc_p75 forecast, c(l l) clp(l) clw(medthick)  clc(brown) mc(brown)) ///
     (scatter delta_rpce forecast, c(l l) clp(l) clw(medthick)  clc(black) mc(black)) ///
     , name(SPF_rcons, replace) scale(1.2) ///
-    legend(order(1 "Minimum" 2 "P25" 3 "Median" 4 "p75" 5 "Actual") cols(1) ring(0) position(10)) xlabel(, valuelabel) xtitle(Forecast)  ytitle(Percent)
+    legend(order(1 "Minimum" 2 "P25" 3 "Median" 4 "p75" 5 "Actual") cols(1) ring(0) position(10)) xlabel(, valuelabel labsize(small)) xtitle(Forecast)  ytitle(Percent)
 
 
 graph export ../output/SPF_dist_`end'_wactual.pdf, as(pdf) replace
