@@ -166,10 +166,33 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
                             dfexp.to_latex('../output/' + defl + '_' + varname + '_drop_' + GE + '_' + parasetname + '.tex', index=False)
 
 
-                            df911 = (df.loc['2001-09-01', list(mpcset)] - df.loc['2001-09-01','Data']).to_frame()
-                            df911.columns = ['September 2001 Impact']
+                            arrays = [
+                                ['Forecast of 9/11 Effect', 'Forecast of 9/11 Effect', 'Forecast of 9/11 Effect'] + ['Macro Counterfactual'] * len(list(mpcset)),
+                                ['Our Pessimistic Forecast', 'September Greenbook', 'Barsky-Sims (2012)'] + list(mpcset),
+                                ]
+
+                            # Create the MultiIndex
+                            multi_index = pd.MultiIndex.from_arrays(arrays, names=('Scenario', 'Specification'))
+
+                            df911 = pd.DataFrame(index = multi_index, columns = ['September 2001 Impact', 'Through December 2001'])
+
+
                             for mpc in list(mpcset):
-                                df911.loc[mpc, ['Through December 2001']] = (df.loc['2001-05-01':'2001-12-01', mpc] - df.loc['2001-05-01':'2001-12-01','Data']).sum()
+                                df911.loc[pd.IndexSlice[:,mpc],'September 2001 Impact'] = df.loc['2001-09-01', mpc] - df.loc['2001-09-01','Data']
+                                df911.loc[pd.IndexSlice[:,mpc], ['Through December 2001']] = (df.loc['2001-05-01':'2001-12-01', mpc] - df.loc['2001-05-01':'2001-12-01','Data']).sum()
+                            df911 = -df911
+
+                            # Forecast
+                            # df911.loc[pd.IndexSlice[:,'Our Pessimistic Forecast']] = 
+
+                            # Greenbook
+                            df911.loc[pd.IndexSlice[:,'September Greenbook'],:] = df.loc['2001Q2','Data'].sum() * 0.0025 
+
+                            # Barsky Sims
+                            # 15 is the E5Y drop in September
+                            # Their shock raises E5Y by 7.5 and C by 0.0015% in the first quarter
+                            df911.loc[pd.IndexSlice[:,'Barsky-Sims (2012)'],'September 2001 Impact'] = df.loc['2001-09-01','Data'].sum() * 15 / 7.5 * 0.0015
+                            df911.loc[pd.IndexSlice[:,'Barsky-Sims (2012)'],'Through December 2001'] = df.loc['2001-09-01':'2001-11-01','Data'].sum() * 15 / 7.5 * 0.0015
 
                             stop
                             
