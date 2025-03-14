@@ -164,6 +164,14 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
                             dfexp = pd.concat([dfdecline[var], dftab], axis=0, ignore_index=True).sort_values(by=['Decline'], ascending=False)
                             
                             dfexp.to_latex('../output/' + defl + '_' + varname + '_drop_' + GE + '_' + parasetname + '.tex', index=False)
+
+
+                            df911 = (df.loc['2001-09-01', list(mpcset)] - df.loc['2001-09-01','Data']).to_frame()
+                            df911.columns = ['September 2001 Impact']
+                            for mpc in list(mpcset):
+                                df911.loc[mpc, ['Through December 2001']] = (df.loc['2001-05-01':'2001-12-01', mpc] - df.loc['2001-05-01':'2001-12-01','Data']).sum()
+
+                            stop
                             
                         # full plot
                         for dfplot, fc in zip(dfplotset, ['','fc']):
