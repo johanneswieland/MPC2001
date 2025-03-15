@@ -180,21 +180,28 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
                             for mpc in list(mpcset):
                                 df911.loc[pd.IndexSlice[:,mpc],'September 2001 Impact'] = df.loc['2001-09-01', mpc] - df.loc['2001-09-01','Data']
                                 df911.loc[pd.IndexSlice[:,mpc], ['Through December 2001']] = (df.loc['2001-05-01':'2001-12-01', mpc] - df.loc['2001-05-01':'2001-12-01','Data']).sum()
-                            df911 = -df911
 
                             # Forecast
-                            # df911.loc[pd.IndexSlice[:,'Our Pessimistic Forecast']] = 
+                            with open('../input/pessimistic_diff911.txt', 'r') as file:
+                                content = file.read().strip()
+                                df911.loc[pd.IndexSlice[:,'Our Pessimistic Forecast'], 'September 2001 Impact'] = float(content)
+                            with open('../input/pessimistic_sum911.txt', 'r') as file:
+                                content = file.read().strip()
+                                df911.loc[pd.IndexSlice[:,'Our Pessimistic Forecast'], 'Through December 2001'] = float(content)
+                            # df911.loc[pd.IndexSlice[:,'Our Pessimistic Forecast'], 'September 2001 Impact'] = 1.165478 
+                            # df911.loc[pd.IndexSlice[:,'Our Pessimistic Forecast'], 'September 2001 Impact'] = 3.055495 
 
                             # Greenbook
-                            df911.loc[pd.IndexSlice[:,'September Greenbook'],:] = df.loc['2001Q2','Data'].sum() * 0.0025 
+                            df911.loc[pd.IndexSlice[:,'September Greenbook'],:] = df.loc['2001Q2','Data'].sum() * -0.0025 
 
                             # Barsky Sims
                             # 15 is the E5Y drop in September, by December normalized
-                            # Their shock raises E5Y by 7.5 and C by 0.0015% in the first quarter
-                            df911.loc[pd.IndexSlice[:,'Barsky-Sims (2012)'],'September 2001 Impact'] = df.loc['2001-09-01','Data'].sum() * 15 / 7.5 * 0.0015
-                            df911.loc[pd.IndexSlice[:,'Barsky-Sims (2012)'],'Through December 2001'] = df.loc['2001-09-01':'2001-11-01','Data'].sum() * 15 / 7.5 * 0.0015
+                            # Their shock raises E5Y by 7.5 and C by 0.0015% in the first quarter (Fig 2)
+                            df911.loc[pd.IndexSlice[:,'Barsky-Sims (2012)'],'September 2001 Impact'] = df.loc['2001-09-01','Data'].sum() * -15 / 7.5 * 0.0015
+                            df911.loc[pd.IndexSlice[:,'Barsky-Sims (2012)'],'Through December 2001'] = df.loc['2001-09-01':'2001-11-01','Data'].sum() * -15 / 7.5 * 0.0015
 
-                            # round to one digit
+                            # round to one digit and format
+                            df911 = -df911
                             df911 = df911.apply(pd.to_numeric, errors='coerce').round(1)
                             df911 = df911.applymap(lambda x: f"${x}bn" if pd.notnull(x) else "")
 
@@ -202,6 +209,8 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
 
                             df911.to_latex('../output/' + defl + '_' + varname + '_911_' + GE + '_' + parasetname + '.tex',
                                           caption = 'Estimated 9/11 Impact on JPS Nondurables vs Our Counterfactuals')
+                            
+                            stop
                             
                         # full plot
                         for dfplot, fc in zip(dfplotset, ['','fc']):
