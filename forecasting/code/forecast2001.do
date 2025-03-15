@@ -116,7 +116,7 @@ file open myfile using "../output/pessimistic_sum911.txt", write replace
 file write myfile "`r(mean)'" _n
 file close myfile
 drop diff911 sum911
-stop
+
 ********************************************************************************
 * C. Exogenous consumer sentiment, no recession dummy
 ********************************************************************************
