@@ -107,8 +107,16 @@ su rcndur_jpscat if mdate==ym(2001,5)
 replace diff911 = diff911 * `=r(mean)' if mdate==ym(2001,9)
 replace sum911 = sum911 * `=r(mean)' if mdate==ym(2001,9)
 su diff911 sum911 if mdate==ym(2001,9)
+su diff911 if mdate==ym(2001,9)
+file open myfile using "../output/pessimistic_diff911.txt", write replace
+file write myfile "`r(mean)'" _n
+file close myfile
+su sum911 if mdate==ym(2001,9)
+file open myfile using "../output/pessimistic_sum911.txt", write replace
+file write myfile "`r(mean)'" _n
+file close myfile
 drop diff911 sum911
-
+stop
 ********************************************************************************
 * C. Exogenous consumer sentiment, no recession dummy
 ********************************************************************************

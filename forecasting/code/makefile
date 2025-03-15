@@ -1,5 +1,5 @@
 # Recipes
-all: ../output/forecasts2001.dta  ../output/fig_forecasts2001.eps ../output/freddata_for_forecasting.dta  ../output/cndur_jpscat.dta ../report/completedata_for_forecasting.csv
+all: ../output/forecasts2001.dta  ../output/fig_forecasts2001.eps ../output/freddata_for_forecasting.dta  ../output/cndur_jpscat.dta ../report/completedata_for_forecasting.csv ../output/pessimistic_diff911.txt ../output/pessimistic_sum911.txt
 
 include ../../generic.make
 
@@ -8,7 +8,7 @@ include ../../generic.make
 ../output/freddata_for_forecasting.dta  ../output/cndur_jpscat.dta ../report/completedata_for_forecasting.csv: build_forecast_data.do  ../input/JPS_consumption_rebate.xlsx | ../output ../report
 	stata-se -b run build_forecast_data.do
 
-../output/forecasts2001.dta ../output/fig_forecasts2001.eps: forecast2001.do  ../output/freddata_for_forecasting.dta
+../output/forecasts2001.dta ../output/fig_forecasts2001.eps ../output/pessimistic_diff911.txt ../output/pessimistic_sum911.txt: forecast2001.do  ../output/freddata_for_forecasting.dta
 	stata-se -b run forecast2001.do
 
 ../input/%.csv: ../../external_data/output/%.csv | ../input
