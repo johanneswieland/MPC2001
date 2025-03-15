@@ -42,7 +42,7 @@ Around 2 hours.
 
 ## Required Packages
 
-For a list of required python packages see requirements.txt (running `make install' should automatically install the required packages).
+For a list of required python packages see requirements.txt (running `make install' should automatically install the required packages). In addition to the packages in requirements.txt, some users have had to install fastparquet directly.
 
 STATA packages:
 
