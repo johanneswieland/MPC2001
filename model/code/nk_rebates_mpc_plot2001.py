@@ -207,10 +207,10 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
 
                             # now convert to string and add '$' at the beginning and 'bn' at end
 
-                            df911.to_latex('../output/' + defl + '_' + varname + '_911_' + GE + '_' + parasetname + '.tex',
+                            df911.to_latex('../output/' + defl + '_' + varname.replace(' ','') + '_911_' + GE + '_' + parasetname + '.tex',
                                           caption = 'Estimated 9/11 Impact on JPS Nondurables vs Our Counterfactuals')
                             
-                            stop
+                            
                             
                         # full plot
                         for dfplot, fc in zip(dfplotset, ['','fc']):
