@@ -167,10 +167,11 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
                             
                             dfexp.to_latex('../output/' + defl + '_' + varname + '_drop_' + GE + '_' + parasetname + '.tex', index=False)
 
-
+                            mpc911 = list(mpcset)
+                            mpc911.remove('micro-MPC = 0.01')
                             arrays = [
-                                ['Forecast of 9/11 Effect', 'Forecast of 9/11 Effect', 'Forecast of 9/11 Effect'] + ['Macro Counterfactual'] * len(list(mpcset)),
-                                ['Our Pessimistic Forecast', 'September Greenbook', 'Barsky-Sims (2012)'] + list(mpcset),
+                                ['Forecast of 9/11 Effect', 'Forecast of 9/11 Effect', 'Forecast of 9/11 Effect'] + ['Macro Counterfactual'] * len(list(mpc911)),
+                                ['Our Pessimistic Forecast', 'September Greenbook', 'Barsky-Sims (2012)'] + list(mpc911),
                                 ]
 
                             # Create the MultiIndex
@@ -178,10 +179,8 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
 
                             df911 = pd.DataFrame(index = multi_index, columns = ['September 2001 Impact', 'Through December 2001'])
 
-
-                            for mpc in list(mpcset):
-                                if mpcval == 'micro-MPC = 0.01':
-                                    continue
+                            
+                            for mpc in mpc911:
                                 df911.loc[pd.IndexSlice[:,mpc],'September 2001 Impact'] = df.loc['2001-09-01', mpc] - df.loc['2001-09-01','Data']
                                 df911.loc[pd.IndexSlice[:,mpc], ['Through December 2001']] = (df.loc['2001-05-01':'2001-12-01', mpc] - df.loc['2001-05-01':'2001-12-01','Data']).sum()
 
@@ -207,7 +206,7 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
                             # round to one digit and format
                             df911 = -df911
                             df911 = df911.apply(pd.to_numeric, errors='coerce').round(1)
-                            df911 = df911.applymap(lambda x: f"${x}bn" if pd.notnull(x) else "")
+                            df911 = df911.applymap(lambda x: f"\${x}bn" if pd.notnull(x) else "")
 
                             # now convert to string and add '$' at the beginning and 'bn' at end
 
