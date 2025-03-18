@@ -35,8 +35,8 @@ modeldates = pd.date_range(start='2001-05-01', freq='MS', periods=Tmax)
 
 # graph defaults
 plt.rc('font', size=12)
-new_prop_cycle = (cycler('color', ['k','tab:blue','tab:purple','r','tab:green']) + 
-                  cycler('linestyle', ['-','-','-','--','--']))                         
+new_prop_cycle = (cycler('color', ['k','tab:blue','tab:purple','tab:green','r']) + 
+                  cycler('linestyle', ['-','-','-','-','--']))                         
 plt.rc('axes', prop_cycle=new_prop_cycle)
 
 # ------------------------------------------------------------------------
@@ -117,13 +117,15 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
         for info in info_set:
             for GE in GEset:
                 for mpcval in mpcset:
+                    if mpcval == 'micro-MPC = 0.01':
+                        continue
                     for var in table_dict.values():
                         deltac = output[parameter][mpcval]['shock'][info][GE][var].sum() * output[parameter][mpcval]['steady'][var]
                         deltat = -output[parameter][mpcval]['shock'][info][GE]['t'].sum() * output[parameter][mpcval]['steady']['t']
                         output[parameter][mpcval]['MPCs'][GE][var]['12 months cumulative'] = deltac / deltat
 
         savetitle = 'mpcs' + parameter + parasetname
-        mpctable(output[parameter], table_dict, mpcset, parasettitle, savetitle)
+        mpctable(output[parameter], table_dict, list(mpcset)[:-1], parasettitle, savetitle)
         
    
 
@@ -178,6 +180,8 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
 
 
                             for mpc in list(mpcset):
+                                if mpcval == 'micro-MPC = 0.01':
+                                    continue
                                 df911.loc[pd.IndexSlice[:,mpc],'September 2001 Impact'] = df.loc['2001-09-01', mpc] - df.loc['2001-09-01','Data']
                                 df911.loc[pd.IndexSlice[:,mpc], ['Through December 2001']] = (df.loc['2001-05-01':'2001-12-01', mpc] - df.loc['2001-05-01':'2001-12-01','Data']).sum()
 
@@ -230,7 +234,10 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
                                     order = 2.5
                                 else:
                                     order = 2
-                                plt.plot(dfpl[col], linewidth=2, zorder=order)
+                                if col == 'micro-MPC = 0.01':
+                                    lowmpc, = plt.plot(dfpl[col], linewidth=2, zorder=order)
+                                else: 
+                                    plt.plot(dfpl[col], linewidth=2, zorder=order)
                             plt.xlim(datetime.datetime(2001,3,1), datetime.datetime(2002,5,1))
                             # ax.xaxis.set_major_locator(mdates.MonthLocator())
                             ax.xaxis.set_major_formatter(mdates.DateFormatter('%b'))
@@ -242,7 +249,28 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
                             plt.legend(list(dfpl.columns), loc='upper left')
                             plt.tight_layout(pad=0)
                             # plt.savefig('../output/mpc' + parameter + defl + varname.replace(' ','') + GE + info + parasetname + '.eps')
+
+                            plt.savefig('../output/' + defl + '_' + varname.replace(' ','') + fc + '_' + GE + '_' + parasetname + psmj + '_appendix.eps')
+                            
+                            # make low mpc invisible for standard graphs
+                            lowmpc.set_visible(False)
+                            # labels = list(dfpl.columns)
+                            # labels.remove('micro-MPC = 0.01')
+                            
+                            handles_labels = [(line, label) for line, label in zip(ax.get_lines(), list(dfpl.columns))
+                                            if line.get_visible() and line.get_label() != '_nolegend_']
+
+                            if handles_labels:
+                                handles, labels = zip(*handles_labels)
+                                ax.legend(handles, labels)
+                            else:
+                                ax.legend([])
+                            
+
+
                             plt.savefig('../output/' + defl + '_' + varname.replace(' ','') + fc + '_' + GE + '_' + parasetname + psmj + '.eps')
+
+                            
 
                             # plt.title(defl + ' ' + varname)
                             ax.legend_ = None
@@ -338,7 +366,7 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
             f.write('\\begin{minipage}{\hsize} \\rule{0pt}{9pt} \\footnotesize \n')
             f.write('Notes: The model is calibrated at a monthly frequency. ')
             if 'gamma' in table.keys():
-                f.write('The parameter $\\gamma$ is calibrated to either 0.3, 0.5, or 0.9, which corresponds to the aggregate MPC in the model. ')
+                f.write('The model is calibrated at a monthly frequency. The parameter $\\gamma$ is calibrated to either 0.375, or 0.66, which corresponds to the 3-month and 6-month non-durable MPCs respectfully. See the text for details. ')
             f.write('See the text for details. ')
             f.write('\\end{minipage}\n')
             f.write('\\label{tab:' + tablesave + '}\n')    
