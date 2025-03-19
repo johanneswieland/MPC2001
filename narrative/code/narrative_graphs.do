@@ -48,7 +48,7 @@ foreach year in "`yearlist'" {
 		local rebatebegin = ym(2001,7)
 		local graphrange "mdate>=m(2001m1) & mdate<=m(2001m12)"
 		local graphrangeincome  "mdate>=m(2001m1) & mdate<=m(2001m12)"
-		local graphrangerebate = "mdate>=m(2001m1) & mdate<=m(2001m12)"
+		local graphrangerebate = "mdate>=m(2001m1) & mdate<m(2001m12)"
 		local yearlabel "01"
 		local axissize = 60
 	}
@@ -91,9 +91,9 @@ foreach year in "`yearlist'" {
 		   graph export ../output/fig_rebates`yearlabel'.eps, replace 
 	
 	if "`year'" == "2001"{
-		   tw (scatter nrebate mdate, c(l ) clp(l ) ms(d ) clw(medthick ) clc(dknavy) mc(dknavy)  yaxis(1) ylabel(0 5 10 15 20 25, axis(1))) (scatter ndisp_income mdate, c(l ) clp(l ) ms(d ) clw(medthick ) clc(green) mc(green) yaxis(2) ylabel(640 645 650 655 660 665, axis(2))) if `graphrangerebate', ///
-		ytitle("rebate, billions of $", axis(1)) ytitle("disposable income, billions of $", axis(1)) ///
-		 xtitle("month") name(rebate_ndisp) scale(1.2) ysize(4) xsize(7)
+		     tw (scatter nrebate mdate, c(- ) clp(- ) ms(i ) clw(medthick ) clc(blue) mc(blue)  yaxis(1) ylabel(0 5 10 15 20 25, axis(1))) (scatter ndisp_income mdate, c(l ) clp(l ) ms(i ) clw(medthick ) clc(green) mc(green) yaxis(2) ylabel(640 645 650 655 660 665, axis(2))) if `graphrangerebate', ///
+		ytitle("Rebate, Billions of $", axis(1)) ytitle("Disposable Income, Billions of $", axis(2)) ///
+		 xtitle("month") name(rebate_ndisp) scale(1.2) ysize(4) xsize(7)  legend(order(1 "Rebate" 2 "Disposable Income") position(10) ring(0) cols(1))
 		   
 		   graph export ../output/fig_rebate_ndisp`yearlabel'.eps, replace 
 	}
