@@ -6,6 +6,7 @@
 ../../psmjregressions/output/bea_all.tex
 ../../psmjregressions/output/Table_2001_NDcompare_wlag.tex
 ../../psmjregressions/output/Table_2001_NDcompare_wlagrbtonly.tex
+../../psmjregressions/output/coefsall_prettytable.xlsx
 ../../narrative/output/fig_cy_pres.eps
 ../../narrative/output/fig_cy_pres01.eps
 ../../narrative/output/fig_jpscy_pres01.eps
