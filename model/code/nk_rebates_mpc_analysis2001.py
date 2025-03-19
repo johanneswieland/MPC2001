@@ -28,8 +28,9 @@ ratelist = ['r','pi','rr','rk']
 # Variable Parameters
 # ------------------------------------------------------------------------
 
-mpctargets = [0.375, 0.66]
-plotlist = ['micro-MPC = 0.375', 'micro-MPC = 0.66']
+mpctargets = [0.375, 0.66, 0.01]
+# plotlist = ['micro-MPC = 0.01', 'micro-MPC = 0.375', 'micro-MPC = 0.66']
+plotlit = ['micro-MPC = ' + str(mpc) for mpc in mpctargets]
 
 parasetnames = ['nondurablesonly2001'] # #'gefeedback',,'inelasticsupply','strongmp' #['inelasticdurables']#
 parasets = [{'xc': 0}] 
