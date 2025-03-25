@@ -363,10 +363,8 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
                 f.write('\\\\ \n')
             f.write('\\bottomrule\\end{tabular}\n') 
             f.write('\\begin{minipage}{\hsize} \\rule{0pt}{9pt} \\footnotesize \n')
-            f.write('Notes: The model is calibrated at a monthly frequency. ')
             if 'gamma' in table.keys():
                 f.write('The model is calibrated at a monthly frequency. The parameter $\\gamma$ is calibrated to either 0.375, or 0.66, which corresponds to the 3-month and 6-month non-durable MPCs respectively. See the text for details. ')
-
             f.write('\\end{minipage}\n')
             f.write('\\label{tab:' + tablesave + '}\n')    
             f.write('\\end{table}\n')    
