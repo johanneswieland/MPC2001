@@ -13,7 +13,10 @@ include ../../generic.make
 ../input/pce%.parquet: ../../downloaddata/output/pce%.parquet | ../input
 	ln -s $< $@	
 
-../input/%.dta: ../../forecasting/output/%.dta | ../input
+../input/forecasts2001.dta: ../../forecasting/output/forecasts2001.dta | ../input
+	ln -s $< $@	
+
+../input/rel_rebate2001.dta: ../../narrative/output/rel_rebate2001.dta | ../input
 	ln -s $< $@	
 
 ../input/jps%.parquet: ../../jpsexpenditure/output/jps%.parquet | ../input
