@@ -303,8 +303,8 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
             'sigma': ['$\\sigma$', 'Utility curvature on consumption'],
             'share1': ['$s_1$', 'Share of JPS Nondurable Consumption in Total Consumption'],
             'eta': ['$\\eta$', 'Durable operating cost'],
-            'nu': ['$\\nu$', 'Weight on disutility of labor'],
-            'phi': ['$\\phi$', 'Inverse of the Frisch elasticity of labor supply'],
+            'nu': ['$\\nu$', 'Weight on disutility of labour'],
+            'phi': ['$\\phi$', 'Inverse of the Frisch elasticity of labour supply'],
             'gamma': ['$\\gamma$', 'Fraction of Hand-to-Mouth consumers'],
             'alpha': ['$\\alpha$', 'Exponent on private capital in production function'],
             'delta': ['$\\delta$', 'Depreciation of private capital'],
@@ -316,7 +316,7 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
             'theta': ['$\\theta_p$', 'Calvo parameter on price adjustment'],
             'thetaw': ['$\\theta_W$','Calvo parameter on wage adjustment'],
             'eps': ['$\\iota$', 'Elasticity of Substitution Across Consumption Varieties'],
-            'epsw': ['$\\epsilon_W$', 'Elasticity of substitution between types of labor'],
+            'epsw': ['$\\epsilon_W$', 'Elasticity of substitution between types of labour'],
             'gyfrac': ['$gy$', 'Steady-state share of total govt spending to GDP'],
             'phib': ['$\\phi_b$', 'Debt feedback coefficient in fiscal rule'],
             'rhor': ['$\\rho_{r}$', 'Monetary policy interest rate smoothing'],
@@ -364,7 +364,7 @@ for parasetname, parasettitle in zip(parasetnames, parasettitles):
             f.write('\\bottomrule\\end{tabular}\n') 
             f.write('\\begin{minipage}{\hsize} \\rule{0pt}{9pt} \\footnotesize \n')
             if 'gamma' in table.keys():
-                f.write('The model is calibrated at a monthly frequency. The parameter $\\gamma$ is calibrated to either 0.375, or 0.66, which corresponds to the 3-month and 6-month non-durable MPCs respectively. See the text for details. ')
+                f.write('The model is calibrated at a monthly frequency. The parameter $\\gamma$ is calibrated to either 0.375, or 0.66, which corresponds to the 3-month and 6-month nondurable MPCs respectively. See the text for details. ')
             f.write('\\end{minipage}\n')
             f.write('\\label{tab:' + tablesave + '}\n')    
             f.write('\\end{table}\n')    
