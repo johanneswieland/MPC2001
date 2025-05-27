@@ -109,17 +109,17 @@ tw (scatter rpcmin forecast, c(l l) clp(l) clw(medthick) xline(`rebatestart', lp
 graph export ../output/SPF_dist_`end'.pdf, as(pdf) replace
 cap graph export ../output/SPF_dist_`end'.png,  replace
 
-tw (scatter rpcmin forecast, c(l l) clp(l) clw(medthick) xline(`rebatestart', lp(-) lc(red))    ///
+tw (scatter rpcmin forecast, c(l l) clp(-) clw(medthick) m(plus) xline(`rebatestart', lp(-) lc(red))    ///
     ytitle("", size(medsmall)) clc(purple) mc(purple))  ///
-    (scatter rpc_p25 forecast, c(l l) clp(l) clw(medthick)  clc(green) mc(green)) ///
-    (scatter rpc_p50 forecast, c(l l) clp(l) clw(medthick)  clc(blue) mc(blue)) ///
-    (scatter rpc_p75 forecast, c(l l) clp(l) clw(medthick)  clc(brown) mc(brown)) ///
-    (scatter delta_rpce forecast, c(l l) clp(l) clw(medthick)  clc(black) mc(black)) ///
+    (scatter rpc_p25 forecast, c(l l) clp(_) clw(medthick)  clc(green) mc(green)) ///
+    (scatter rpc_p50 forecast, c(l l) clp(-) clw(medthick) m(square)  clc(blue) mc(blue)) ///
+    (scatter rpc_p75 forecast, c(l l) clp(_) clw(medthick)   m(square_hollow) clc(brown) mc(brown)) ///
+    (scatter delta_rpce forecast, c(l l) clp(l) clw(medthick) m(circle)  clc(black) mc(black)) ///
     , name(SPF_rcons, replace) scale(1.2) ///
     legend(order(1 "Minimum" 2 "P25" 3 "Median" 4 "p75" 5 "Actual") cols(1) ring(0) position(10)) xlabel(, valuelabel labsize(small)) xtitle(Forecast)  ytitle(Percent)
 
 
-graph export ../output/SPF_dist_`end'_wactual.pdf, as(pdf) replace
+graph export ../output/SPF_dist_`end'_wactual.eps, as(eps) replace
 cap graph export ../output/SPF_dist_`end'_wactual.png,  replace
 
 keep qdate RCONS* pcec96

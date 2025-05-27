@@ -36,7 +36,7 @@ modeldates = pd.date_range(start='2001-05-01', freq='MS', periods=Tmax)
 # graph defaults
 plt.rc('font', size=12)
 new_prop_cycle = (cycler('color', ['k','tab:blue','tab:purple','tab:green','r']) + 
-                  cycler('linestyle', ['-','-','-','-','--']))                         
+                  cycler('linestyle', ['-','dashdot',(5, (10, 3)),(0, (3, 1, 1, 1)),'--']))                         
 plt.rc('axes', prop_cycle=new_prop_cycle)
 
 # ------------------------------------------------------------------------

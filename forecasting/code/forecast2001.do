@@ -266,7 +266,7 @@ local var lrcndur_jpscat
 local var lrcndur_jpscat
 	tw scatter `var' `var'forB `var'forD jpsnd_gbfc mdate ///
 	if mdate>=m(2001m4) & mdate<=m(2002m4), clc(black red blue green gray) mcolor(black red blue green gray) ///
-  c(l l l) clp(l - -) ms(i i i) clw(medthick medthick medthick)  ///
+  c(l l l) clp(l - _) ms(i i i) clw(medthick medthick medthick)  ///
   legend(cols(1) ring(0) position(10)) ytitle("Billion $") scale(1)
 
 graph export ../output/fig_forecasts2001_jpsnondur.eps, replace
